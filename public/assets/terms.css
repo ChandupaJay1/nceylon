@@ -1,0 +1,11 @@
+.anim{
+    transition-timing-function: linear;
+}
+
+.anim:hover{
+letter-spacing: 1px;
+/* transition: 1000ms; */
+transition: 1000ms;
+/* transition: 1000ms ease-in, 1000ms ease-out; */
+}
+

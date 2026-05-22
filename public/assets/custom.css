@@ -1,0 +1,31 @@
+
+.contact-box{
+   height: 300px;
+}
+
+/* ///Next buttons product page// */
+
+.back:hover {
+   background-color: #ddd;
+   color: black;
+}
+.next:hover {
+   background-color: rgb(79, 127, 88);
+   color: white;
+}
+.back {
+   width: 50px;
+   height: 50px;
+   border-radius: 30px;
+   background-color: #acacac;
+   color: black;
+   padding: 15px;
+}
+.next {
+   width: 50px;
+   height: 50px;
+   border-radius: 30px;
+   background-color: rgb(53, 191, 67);
+   color: white;
+   padding: 15px;
+}
