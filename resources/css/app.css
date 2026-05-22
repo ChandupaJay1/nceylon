@@ -7,19 +7,19 @@
 @source '../**/*.js';
 
 @theme {
-    /* Brand Colors - Sri Lankan Spices Theme */
-    --color-primary: #A83F2C;
-    /* Cinnamon Terracotta Red-Orange */
-    --color-primary-dark: #872B1B;
-    /* Deep Cinnamon Terracotta */
+    /* Brand Colors - N-Ceylon Logo Colors */
+    --color-primary: #ff3131;
+    /* Logo Red */
+    --color-primary-dark: #cc0000;
+    /* Deep Logo Red */
     --color-secondary: #112318;
     /* Deep Cardamom Forest Green */
     --color-secondary-light: #1E3827;
     /* Cardamom Sage Green */
-    --color-accent: #E29E30;
-    /* Turmeric Saffron Gold */
-    --color-accent-dark: #C5821F;
-    /* Rich Saffron Ochre */
+    --color-accent: #f6d037;
+    /* Logo Gold/Yellow */
+    --color-accent-dark: #ffbd59;
+    /* Logo Orange/Amber */
     --color-surface: #FAF6F0;
     /* Warm Sand Beige */
     --color-surface-dark: #F2ECE2;
@@ -30,7 +30,7 @@
     /* Refined Shadows */
     --shadow-premium: 0 20px 45px -12px rgba(17, 35, 24, 0.12);
     --shadow-glass: 0 8px 32px 0 rgba(17, 35, 24, 0.05);
-    --shadow-spice-gold: 0 12px 28px -5px rgba(226, 158, 48, 0.25);
+    --shadow-spice-gold: 0 12px 28px -5px rgba(246, 208, 55, 0.30);
 
     /* Typography */
     --font-sans: 'Inter', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
@@ -52,7 +52,7 @@
 @layer utilities {
     .bg-spice-pattern {
         background-color: var(--color-surface);
-        background-image: radial-gradient(rgba(168, 63, 44, 0.04) 1px, transparent 0),
+        background-image: radial-gradient(rgba(255, 49, 49, 0.04) 1px, transparent 0),
                           radial-gradient(rgba(17, 35, 24, 0.03) 1px, transparent 0);
         background-size: 24px 24px;
         background-position: 0 0, 12px 12px;
@@ -114,7 +114,9 @@
     .reveal-right,
     .reveal-up {
         opacity: 0;
-        transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
     }
 
     .reveal-left {
@@ -133,6 +135,13 @@
         opacity: 1 !important;
         transform: translate(0, 0) !important;
     }
+
+    /* Stagger siblings inside a grid */
+    .grid > .reveal-up:nth-child(2) { transition-delay: 0.1s; }
+    .grid > .reveal-up:nth-child(3) { transition-delay: 0.2s; }
+    .grid > .reveal-up:nth-child(4) { transition-delay: 0.3s; }
+    .grid > .reveal-up:nth-child(5) { transition-delay: 0.4s; }
+    .grid > .reveal-up:nth-child(6) { transition-delay: 0.5s; }
 
     /* Preloader Animations */
     .animate-spin-slow {

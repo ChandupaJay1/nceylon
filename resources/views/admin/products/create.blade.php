@@ -3,14 +3,16 @@
 @section('title', 'Admin - Add New Product')
 
 @section('content')
-<div class="min-h-screen bg-surface pt-32 pb-20">
-    <div class="container mx-auto px-4 max-w-2xl">
+<div class="min-h-screen bg-surface flex">
+    @include('admin.layouts.sidebar')
+    <div class="flex-1 lg:ml-64 pt-24 pb-16 px-6 lg:px-10">
+        <div class="max-w-2xl">
         <!-- Header -->
-        <div class="mb-12">
-            <a href="{{ route('admin.products.index') }}" class="text-primary hover:text-primary-dark font-semibold mb-4 inline-flex items-center gap-2">
-                <i class="fas fa-arrow-left"></i> Back to Products
+        <div class="mb-10">
+            <a href="{{ route('admin.products.index') }}" class="text-primary hover:text-primary-dark font-semibold mb-4 inline-flex items-center gap-2 text-sm">
+                <i class="fas fa-arrow-left text-xs"></i> Back to Products
             </a>
-            <h1 class="text-4xl font-heading font-black text-secondary">Add New Product</h1>
+            <h1 class="text-3xl font-heading font-black text-secondary">Add New Product</h1>
         </div>
 
         <!-- Form -->
@@ -87,9 +89,9 @@
                 <div>
                     <label for="stock_status" class="block text-sm font-black text-secondary mb-2">Stock Status *</label>
                     <select id="stock_status" name="stock_status" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary @error('stock_status') border-red-500 @enderror">
-                        <option value="In Stock" @selected(old('stock_status') === 'In Stock')>In Stock</option>
-                        <option value="Out of Stock" @selected(old('stock_status') === 'Out of Stock')>Out of Stock</option>
-                        <option value="Pre-Order" @selected(old('stock_status') === 'Pre-Order')>Pre-Order</option>
+                        @foreach($stockStatuses as $status)
+                        <option value="{{ $status->name }}" @selected(old('stock_status') === $status->name)>{{ $status->name }}</option>
+                        @endforeach
                     </select>
                     @error('stock_status') <p class="text-red-600 text-sm mt-1">{{ $message }}</p> @enderror
                 </div>
@@ -128,8 +130,9 @@
                 </a>
             </div>
         </form>
-    </div>
-</div>
+        </div>{{-- max-w-2xl --}}
+    </div>{{-- flex-1 --}}
+</div>{{-- flex --}}
 
 <script>
 function previewImage(event) {

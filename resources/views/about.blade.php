@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
-@section('title', 'Our Story | NCEYLON Spices')
-@section('meta_description', 'Learn about NCEYLON — Sri Lanka\'s authentic spice exporter sourcing premium Ceylon cinnamon, pepper, cardamom and more from highland farms in Kandy & Matale.')
+@section('title', 'Our Story | N-CEYLON Spices')
+@section('meta_description', 'Learn about N-Ceylon Food & Spice Company — a family-run Sri Lankan spice business founded in 2023 by Mrs. T.M. Priyani Tennakoon and Mr. U.D.W. Nandana Rodrigo, offering 32+ authentic Ceylon spices.')
 
 @section('content')
     <!-- Page Header -->
@@ -33,11 +33,11 @@
                         <div class="absolute -inset-4 bg-primary/10 rounded-[50px] blur-2xl opacity-0 group-hover:opacity-100 transition-all"></div>
                         <img src="{{ asset('assets/spices/imag/spices4.jpg') }}"
                              class="rounded-[50px] shadow-premium w-full relative z-10 transition-all duration-700 group-hover:scale-[1.01]"
-                             alt="NCEYLON Spice Plantation in Sri Lanka">
+                             alt="N-CEYLON Spice Plantation in Sri Lanka">
                         <!-- Floating badge -->
                         <div class="absolute -bottom-8 -right-8 bg-primary text-white p-8 rounded-[30px] shadow-premium z-20 hidden xl:block animate-floating">
-                            <div class="text-4xl font-heading font-black leading-none">15+</div>
-                            <div class="text-xs font-black uppercase tracking-widest text-white/70 mt-1">Years of Export</div>
+                            <div class="text-4xl font-heading font-black leading-none">32+</div>
+                            <div class="text-xs font-black uppercase tracking-widest text-white/70 mt-1">Spice Varieties</div>
                         </div>
                     </div>
                 </div>
@@ -46,17 +46,20 @@
                 <div class="lg:w-1/2 reveal-right">
                     <span class="text-primary font-black uppercase tracking-[0.2em] text-xs mb-4 block">Get to Know Us</span>
                     <h2 class="text-3xl sm:text-4xl lg:text-6xl font-heading font-black text-secondary mt-4 mb-8 leading-tight">
-                        Authentic Ceylon Spices, <span class="text-primary italic">Straight from the Source</span>
+                        A Family Legacy of <span class="text-primary italic">Authentic Ceylon Spices</span>
                     </h2>
                     <p class="text-gray-500 mb-6 leading-relaxed text-sm">
-                        Founded in 2008, NCEYLON was born from a simple belief — the world deserves to taste Sri Lanka's spices in their most authentic, unadulterated form. We partner directly with over 350 smallholder farmers in the misty highlands of Kandy and Matale, where the volcanic soil and tropical climate produce the world's finest cinnamon, pepper, cardamom, and cloves.
+                        Originating from a country with a long history and legacy for world-class spices, N-Ceylon Food & Spice Company carries a wide scope of products — from re-cleaned ground spices and herbs, seasonings, and aromatic seeds, to dehydrated food items.
+                    </p>
+                    <p class="text-gray-500 mb-6 leading-relaxed text-sm">
+                        N-Ceylon Spices is a family-run business initiated in February 2023, incorporating 32 spices from the very start. The founder, <strong class="text-secondary font-black">Mrs. T.M. Priyani Tennakoon</strong>, together with her husband and co-founder <strong class="text-secondary font-black">Mr. U.D.W. Nandana Rodrigo</strong>, envisioned a business that would hand-package and deliver ground spices and herbs directly to local clientele. That vision grew into a thriving company — and N-Ceylon Food & Spice Company was born.
                     </p>
                     <p class="text-gray-500 mb-10 leading-relaxed text-sm">
-                        Every batch we export is hand-harvested, sun-dried on elevated wooden tables, and vacuum-sealed within hours of sorting to lock in the essential aromatic oils that make Ceylon spices legendary. We hold Grade-1 certification and supply to food manufacturers, spice blenders, and premium retailers across 15+ countries.
+                        We cater the best quality products, captivating spices and tastes, and striking outcomes for our clients. We invest a huge amount of time and resources — alongside our team and supervisory crew — into frameworks designed to guarantee that every product meets the absolute highest standards.
                     </p>
 
                     <div class="grid grid-cols-2 gap-6 mt-10">
-                        @foreach([['fa-certificate', '100% Grade-1 Certified'], ['fa-globe', 'Exported to 15+ Nations'], ['fa-leaf', 'Ethical Agroforestry'], ['fa-flask', 'Lab Verified Quality']] as [$icon, $label])
+                        @foreach([['fa-certificate', 'GMP Certification (In Progress)'], ['fa-globe', 'Local & Export Ready'], ['fa-leaf', 'Hand-Packaged Quality'], ['fa-flask', 'Lab Verified Standards']] as [$icon, $label])
                         <div class="flex items-center gap-4 group">
                             <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
                                 <i class="fas {{ $icon }}"></i>
@@ -80,9 +83,9 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 @foreach([
-                    ['fa-seedling', 'Sustainable Sourcing', 'We work exclusively with agroforestry farms that grow spices alongside native trees, preserving biodiversity and enriching the soil naturally without synthetic chemicals.'],
-                    ['fa-handshake', 'Farmer Partnerships', 'Our direct trade model ensures that 300+ farming families in Kandy and Matale receive fair, above-market prices for their premium harvests every single season.'],
-                    ['fa-award', 'Uncompromising Quality', 'From field to freight, every lot undergoes moisture testing, volatile oil analysis, and visual grading before it earns the NCEYLON seal of approval.']
+                    ['fa-seedling', 'Freshest Quality Products', 'It is vital that the products we obtain are the freshest, most outstanding quality available. We source directly to ensure nothing but the best reaches our clients.'],
+                    ['fa-handshake', 'Family-Run with Heart', 'Founded by Mrs. T.M. Priyani Tennakoon and Mr. U.D.W. Nandana Rodrigo, N-Ceylon is built on family values — personal care, trust, and a genuine passion for Sri Lankan spices.'],
+                    ['fa-award', 'GMP Certified Standards', 'We are in the final stages of GMP (Good Manufacturing Practices) certification under the "Strengthening Quality Infrastructure in Sri Lanka" project, supported by PTB, the German National Metrology Institute.']
                 ] as [$icon, $title, $desc])
                 <div class="bg-surface rounded-[40px] p-10 lg:p-12 group hover:bg-primary transition-all duration-500 reveal-up shadow-premium border border-secondary/5">
                     <div class="w-16 h-16 bg-primary/10 group-hover:bg-white/20 rounded-2xl flex items-center justify-center text-primary group-hover:text-white text-2xl mb-8 transition-all">
@@ -125,11 +128,11 @@
 
             <div class="max-w-3xl mx-auto space-y-0">
                 @foreach([
-                    ['2008', 'Company Founded', 'NCEYLON was established in Kandy with a mission to bring authentic, unadulterated Ceylon spices to global markets with full traceability.'],
-                    ['2012', 'First Export Certification', 'Received Grade-1 export certification from the Sri Lanka Export Development Board, opening doors to premium buyers in Europe and the Middle East.'],
-                    ['2016', 'Farmer Network Expanded', 'Grew our direct-trade farmer network to 200+ families across Matale and Kandy highlands, introducing fair-price contracts and agroforestry training.'],
-                    ['2020', 'Lab Testing Facility', 'Opened our in-house quality lab for moisture, volatile oil, and microbial testing — ensuring every batch meets international food safety standards.'],
-                    ['2024', '15 Export Nations', 'Now supplying premium Ceylon spices to food manufacturers, spice blenders, and retailers across 15 countries on 4 continents.']
+                    ['Feb 2023', 'N-Ceylon Founded', 'N-Ceylon Food & Spice Company was established by Mrs. T.M. Priyani Tennakoon and Mr. U.D.W. Nandana Rodrigo with a vision to hand-package and deliver authentic ground spices and herbs to local clientele, starting with 32 spice varieties.'],
+                    ['2023', 'Growing the Range', 'The company expanded its product range to include re-cleaned ground spices, herbs, seasonings, sweet-smelling seeds, and dehydrated food items — building a comprehensive spice portfolio.'],
+                    ['2023–2024', 'Building Quality Frameworks', 'Invested heavily in team training and supervisory systems to guarantee every product meets the absolute highest standards of freshness and quality before reaching clients.'],
+                    ['2024', 'GMP Certification Journey', 'Entered the final stages of GMP (Good Manufacturing Practices) certification under the "Strengthening Quality Infrastructure in Sri Lanka" project, supported by PTB — the German National Metrology Institute.'],
+                    ['Today', 'A Thriving Family Business', 'What began as a family vision has grown into a thriving company, delivering premium Ceylon spices with the personal care and quality commitment that only a family-run business can offer.']
                 ] as [$year, $title, $desc])
                 <div class="relative pl-16 pb-12 reveal-up">
                     <div class="absolute left-0 top-0 w-[2px] h-full bg-primary/20"></div>
@@ -139,6 +142,29 @@
                     <p class="text-gray-500 text-sm leading-relaxed">{{ $desc }}</p>
                 </div>
                 @endforeach
+            </div>
+        </div>
+    </section>
+
+    <!-- GMP Certification Highlight -->
+    <section class="py-16 bg-secondary relative overflow-hidden bg-noise-overlay">
+        <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/60 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/60 to-transparent"></div>
+        <div class="absolute -left-24 top-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 max-w-5xl mx-auto">
+                <div class="w-20 h-20 bg-primary/20 border border-primary/30 rounded-[24px] flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-medal text-4xl text-accent"></i>
+                </div>
+                <div class="text-center lg:text-left">
+                    <span class="text-accent text-[10px] font-black uppercase tracking-[0.3em] mb-3 block">Quality Milestone</span>
+                    <h3 class="text-xl sm:text-2xl font-heading font-black text-white mb-3 leading-snug">
+                        GMP Certification — Final Stages
+                    </h3>
+                    <p class="text-white/55 text-sm leading-relaxed max-w-2xl">
+                        We're excited to announce that N-Ceylon is in the final stages of <strong class="text-white/80">Good Manufacturing Practices (GMP)</strong> certification under the project <em>"Strengthening Quality Infrastructure in Sri Lanka,"</em> supported by <strong class="text-white/80">PTB — the German National Metrology Institute</strong>. We're dedicated to upholding the highest quality standards in everything we do.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -175,7 +201,7 @@
                 <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/leaf.png')] opacity-[0.03]"></div>
                 <div class="relative z-10 max-w-2xl mx-auto">
                     <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-black text-white mb-6 leading-none">
-                        Ready to Partner with <span class="italic text-secondary">NCEYLON?</span>
+                        Ready to Partner with <span class="italic text-accent"> <br>N-CEYLON?</span>
                     </h2>
                     <p class="text-white/80 mb-10 text-sm leading-relaxed">
                         Whether you're a food manufacturer, spice blender, or premium retailer — we have the right supply contract for your needs.

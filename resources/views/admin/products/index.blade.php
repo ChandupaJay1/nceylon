@@ -1,94 +1,105 @@
 @extends('layouts.master')
-
-@section('title', 'Admin - Products Management')
-
+@section('title', 'Admin — Products')
 @section('content')
-<div class="min-h-screen bg-surface pt-32 pb-20">
-    <div class="container mx-auto px-4">
-        <!-- Header -->
-        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-12">
+<div class="min-h-screen bg-surface flex">
+    @include('admin.layouts.sidebar')
+    <div class="flex-1 lg:ml-64 pt-24 pb-16 px-6 lg:px-10">
+
+        {{-- Header --}}
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-10">
             <div>
-                <h1 class="text-4xl font-heading font-black text-secondary mb-2">Products Management</h1>
-                <p class="text-secondary/60 text-sm">Manage all your spice products</p>
+                <h1 class="text-3xl font-heading font-black text-secondary">Products</h1>
+                <p class="text-secondary/50 text-sm mt-1">Manage your spice product catalogue</p>
             </div>
-            <a href="{{ route('admin.products.create') }}" class="bg-primary hover:bg-primary-dark text-white font-black px-8 py-4 rounded-full transition-all">
-                <i class="fas fa-plus mr-2"></i> Add New Product
+            <a href="{{ route('admin.products.create') }}"
+               class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-black px-6 py-3 rounded-full transition-all text-sm">
+                <i class="fas fa-plus text-xs"></i> Add Product
             </a>
         </div>
 
-        <!-- Success Message -->
+        {{-- Flash --}}
         @if(session('success'))
-        <div class="bg-green-50 border border-green-200 text-green-700 px-6 py-4 rounded-lg mb-8">
-            {{ session('success') }}
+        <div class="flex items-center gap-3 bg-green-50 border border-green-200 text-green-700 px-5 py-4 rounded-2xl mb-8 text-sm font-semibold">
+            <i class="fas fa-check-circle"></i> {{ session('success') }}
         </div>
         @endif
 
-        <!-- Products Table -->
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        {{-- Table --}}
+        <div class="bg-white rounded-2xl shadow-premium border border-secondary/5 overflow-hidden">
             <table class="w-full">
                 <thead class="bg-secondary text-white">
                     <tr>
-                        <th class="px-6 py-4 text-left text-sm font-black">Product Name</th>
-                        <th class="px-6 py-4 text-left text-sm font-black">Category</th>
-                        <th class="px-6 py-4 text-left text-sm font-black">Unit</th>
-                        <th class="px-6 py-4 text-left text-sm font-black">Stock Status</th>
-                        <th class="px-6 py-4 text-left text-sm font-black">Featured</th>
-                        <th class="px-6 py-4 text-left text-sm font-black">Active</th>
-                        <th class="px-6 py-4 text-center text-sm font-black">Actions</th>
+                        <th class="px-6 py-4 text-left text-xs font-black uppercase tracking-widest">Product</th>
+                        <th class="px-6 py-4 text-left text-xs font-black uppercase tracking-widest">Category</th>
+                        <th class="px-6 py-4 text-left text-xs font-black uppercase tracking-widest">Unit</th>
+                        <th class="px-6 py-4 text-left text-xs font-black uppercase tracking-widest">Stock</th>
+                        <th class="px-6 py-4 text-left text-xs font-black uppercase tracking-widest">Featured</th>
+                        <th class="px-6 py-4 text-left text-xs font-black uppercase tracking-widest">Active</th>
+                        <th class="px-6 py-4 text-center text-xs font-black uppercase tracking-widest">Actions</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-gray-200">
+                <tbody class="divide-y divide-gray-100">
                     @forelse($products as $product)
-                    <tr class="hover:bg-gray-50 transition-colors">
+                    <tr class="hover:bg-surface transition-colors">
                         <td class="px-6 py-4">
                             <div class="flex items-center gap-3">
-                                @if($product->image_path)
-                                <img src="{{ asset($product->image_path) }}" alt="{{ $product->name }}" class="w-10 h-10 rounded object-cover">
-                                @endif
+                                <img src="{{ $product->image_url }}"
+                                     alt="{{ $product->name }}"
+                                     class="w-11 h-11 rounded-xl object-cover border border-secondary/10 flex-shrink-0">
                                 <div>
-                                    <p class="font-semibold text-secondary">{{ $product->name }}</p>
-                                    <p class="text-xs text-secondary/50">{{ $product->slug }}</p>
+                                    <p class="font-black text-secondary text-sm">{{ $product->name }}</p>
+                                    <p class="text-xs text-secondary/40 font-semibold">{{ $product->slug }}</p>
                                 </div>
                             </div>
                         </td>
-                        <td class="px-6 py-4 text-sm text-secondary/70">{{ $product->category }}</td>
-                        <td class="px-6 py-4 text-sm text-secondary/70">{{ $product->unit }}</td>
+                        <td class="px-6 py-4 text-sm text-secondary/70 font-semibold">{{ $product->category }}</td>
+                        <td class="px-6 py-4 text-sm text-secondary/70 font-semibold">{{ $product->unit }}</td>
                         <td class="px-6 py-4">
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-black
-                                @if($product->stock_status === 'In Stock') bg-green-100 text-green-700
-                                @elseif($product->stock_status === 'Out of Stock') bg-red-100 text-red-700
-                                @else bg-yellow-100 text-yellow-700
-                                @endif">
+                            @php
+                                $statusColor = \App\Models\StockStatus::where('name', $product->stock_status)->value('color') ?? 'gray';
+                                $badgeClass = match($statusColor) {
+                                    'green'  => 'bg-green-100 text-green-700',
+                                    'red'    => 'bg-red-100 text-red-700',
+                                    'yellow' => 'bg-yellow-100 text-yellow-700',
+                                    'blue'   => 'bg-blue-100 text-blue-700',
+                                    default  => 'bg-gray-100 text-gray-700',
+                                };
+                            @endphp
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-black {{ $badgeClass }}">
                                 {{ $product->stock_status }}
                             </span>
                         </td>
                         <td class="px-6 py-4">
                             @if($product->featured)
                             <span class="inline-flex items-center gap-1 text-accent font-black text-sm">
-                                <i class="fas fa-star"></i> Yes
+                                <i class="fas fa-star text-xs"></i> Yes
                             </span>
                             @else
-                            <span class="text-secondary/40 text-sm">No</span>
+                            <span class="text-secondary/30 text-sm font-semibold">—</span>
                             @endif
                         </td>
                         <td class="px-6 py-4">
                             @if($product->is_active)
-                            <span class="inline-flex items-center gap-1 text-green-600 font-black text-sm">
-                                <i class="fas fa-check-circle"></i> Active
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-black">
+                                <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span> Active
                             </span>
                             @else
-                            <span class="text-secondary/40 text-sm">Inactive</span>
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-gray-100 text-gray-500 rounded-full text-xs font-black">
+                                <span class="w-1.5 h-1.5 bg-gray-400 rounded-full"></span> Inactive
+                            </span>
                             @endif
                         </td>
                         <td class="px-6 py-4">
-                            <div class="flex items-center justify-center gap-2">
-                                <a href="{{ route('admin.products.edit', $product) }}" class="text-primary hover:text-primary-dark transition-colors" title="Edit">
+                            <div class="flex items-center justify-center gap-3">
+                                <a href="{{ route('admin.products.edit', $product) }}"
+                                   class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all text-sm" title="Edit">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <form action="{{ route('admin.products.destroy', $product) }}" method="POST" class="inline" onsubmit="return confirm('Are you sure?');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="text-red-600 hover:text-red-800 transition-colors" title="Delete">
+                                <form action="{{ route('admin.products.destroy', $product) }}" method="POST"
+                                      onsubmit="return confirm('Delete \'{{ $product->name }}\'? This cannot be undone.')">
+                                    @csrf @method('DELETE')
+                                    <button type="submit"
+                                            class="w-8 h-8 flex items-center justify-center rounded-lg bg-red-50 text-red-500 hover:bg-red-500 hover:text-white transition-all text-sm" title="Delete">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
@@ -97,9 +108,9 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="7" class="px-6 py-12 text-center text-secondary/50">
-                            <i class="fas fa-inbox text-4xl mb-4 block opacity-30"></i>
-                            No products found. <a href="{{ route('admin.products.create') }}" class="text-primary font-semibold">Create one now</a>
+                        <td colspan="7" class="px-6 py-16 text-center text-secondary/40">
+                            <i class="fas fa-box-open text-4xl mb-3 block opacity-20"></i>
+                            No products yet. <a href="{{ route('admin.products.create') }}" class="text-primary font-semibold">Add one now</a>
                         </td>
                     </tr>
                     @endforelse
@@ -107,10 +118,7 @@
             </table>
         </div>
 
-        <!-- Pagination -->
-        <div class="mt-8">
-            {{ $products->links() }}
-        </div>
+        <div class="mt-6">{{ $products->links() }}</div>
     </div>
 </div>
 @endsection

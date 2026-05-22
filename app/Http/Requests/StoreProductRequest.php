@@ -28,7 +28,7 @@ class StoreProductRequest extends FormRequest
             'category' => 'required|string',
             'unit' => 'required|string',
             'price' => 'nullable|numeric|min:0',
-            'stock_status' => 'required|in:In Stock,Out of Stock,Pre-Order',
+            'stock_status' => 'required|string|exists:stock_statuses,name',
             'featured' => 'boolean',
             'sort_order' => 'nullable|integer',
             'is_active' => 'boolean',

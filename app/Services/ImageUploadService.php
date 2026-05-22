@@ -47,11 +47,7 @@ class ImageUploadService
         }
 
         try {
-            $fullPath = public_path($imagePath);
-            if (file_exists($fullPath)) {
-                unlink($fullPath);
-                return true;
-            }
+            \Storage::disk('public')->delete($imagePath);
             return true;
         } catch (\Exception $e) {
             \Log::error('Image deletion failed: ' . $e->getMessage());

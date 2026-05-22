@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
-@section('title', 'Wholesale Plans & Quotations | NCEYLON')
-@section('meta_description', 'Explore NCEYLON wholesale spice supply plans — LCL spot orders, FCL monthly contracts, custom grinding, and annual price-lock agreements.')
+@section('title', 'Wholesale Plans & Quotations | N-CEYLON')
+@section('meta_description', 'Explore N-CEYLON wholesale spice supply plans — LCL spot orders, FCL monthly contracts, custom grinding, and annual price-lock agreements.')
 
 @section('content')
 
@@ -493,7 +493,7 @@
         <div class="max-w-2xl mx-auto text-center bg-white/5 border border-white/10 rounded-[32px] p-10 reveal-section">
             <i class="fas fa-handshake text-accent/30 text-5xl mb-6 block"></i>
             <p class="text-gray-400 text-sm font-semibold italic leading-relaxed mb-8">
-                By subscribing to any NCEYLON supply plan, you confirm that you have read, understood, and agreed to all trade terms listed above.
+                By subscribing to any N-CEYLON supply plan, you confirm that you have read, understood, and agreed to all trade terms listed above.
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a href="{{ url('/contact') }}"
@@ -518,7 +518,7 @@
         <div class="flex flex-col lg:flex-row items-center justify-between gap-8 max-w-5xl mx-auto">
             <div>
                 <h3 class="text-2xl sm:text-3xl font-heading font-black text-white leading-tight">
-                    Still unsure which plan fits? <span class="italic text-secondary">Talk to us.</span>
+                    Still unsure which plan fits? <span class="italic text-accent">Talk to us.</span>
                 </h3>
                 <p class="text-white/60 text-sm font-semibold mt-2">Our trade team will recommend the right contract for your volume and destination.</p>
             </div>
@@ -527,12 +527,12 @@
                    class="px-8 py-4 bg-white text-secondary rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-secondary hover:text-white transition-all shadow-lg hover:scale-105 active:scale-95">
                     Contact Trade Team
                 </a>
-                <a href="tel:+94771234567"
+                <a href="mailto:nceylonspices@gmail.com"
                    class="flex items-center gap-3 text-white/70 hover:text-white transition-colors group">
                     <div class="w-10 h-10 bg-white/10 border border-white/20 rounded-full flex items-center justify-center group-hover:bg-white/20 transition-all">
-                        <i class="fas fa-phone text-xs"></i>
+                        <i class="fas fa-envelope text-xs"></i>
                     </div>
-                    <span class="text-xs font-black hidden sm:block">+94 77 123 4567</span>
+                    <span class="text-xs font-black hidden sm:block">nceylonspices@gmail.com</span>
                 </a>
             </div>
         </div>

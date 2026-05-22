@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'NCEYLON | Premium Sri Lankan Spices')
+@section('title', 'N-CEYLON | Premium Sri Lankan Spices')
 
 @section('content')
     <!-- [HERO] Version 2.0: Cinematic Immersive Slider -->
@@ -316,7 +316,7 @@
                 </h2>
                 <div class="flex flex-col items-center gap-4">
                     <div class="w-16 h-[2px] bg-accent/30"></div>
-                    <span class="text-accent font-black tracking-[0.3em] uppercase text-[10px]">NCEYLON Spices Manifesto</span>
+                    <span class="text-accent font-black tracking-[0.3em] uppercase text-[10px]">N-CEYLON Spices Manifesto</span>
                 </div>
             </div>
         </div>
@@ -396,7 +396,7 @@
                 <div class="absolute -top-32 -left-32 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
                 
                 <div class="relative z-10 max-w-2xl mx-auto">
-                    <h2 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-white mb-6 leading-none">Ready to Source the Finest <span class="italic text-secondary">Ceylon Spices?</span></h2>
+                    <h2 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-white mb-6 leading-none">Ready to Source the Finest <span class="italic text-accent">Ceylon Spices?</span></h2>
                     <p class="text-white/80 mb-10 text-sm sm:text-base leading-relaxed">Partner with Sri Lanka's leading ethical exporter. Request detailed product specifications and a custom wholesale quotation today.</p>
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <a href="{{ url('/contact') }}" class="w-full sm:w-auto px-10 py-5 bg-white text-secondary rounded-full font-black text-sm tracking-wider uppercase hover:bg-secondary hover:text-white transition-all shadow-lg scale-100 hover:scale-105 active:scale-95">

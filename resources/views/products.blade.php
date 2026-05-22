@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
-@section('title', 'Spice Collection | NCEYLON')
-@section('meta_description', 'Browse NCEYLON\'s premium Ceylon spice collection — cinnamon, black pepper, cardamom, cloves, nutmeg and more. Wholesale export quality from Sri Lanka.')
+@section('title', 'Spice Collection | N-CEYLON')
+@section('meta_description', 'Browse N-CEYLON\'s premium Ceylon spice collection — cinnamon, black pepper, cardamom, cloves, nutmeg and more. Wholesale export quality from Sri Lanka.')
 
 @section('content')
     <!-- Page Header -->

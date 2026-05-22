@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Category;
 use App\Models\Product;
+use App\Models\StockStatus;
+use App\Models\Unit;
 use App\Services\ImageUploadService;
 use Illuminate\Support\Str;
 
@@ -32,9 +35,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = ['Whole Spices', 'Ground Spices', 'Spice Blends', 'Specialty Items'];
-        $units = ['Kg', 'g', 'lb', 'oz'];
-        return view('admin.products.create', compact('categories', 'units'));
+        $categories    = Category::active()->orderBy('sort_order')->pluck('name');
+        $units         = Unit::active()->orderBy('sort_order')->pluck('name');
+        $stockStatuses = StockStatus::active()->orderBy('sort_order')->get();
+        return view('admin.products.create', compact('categories', 'units', 'stockStatuses'));
     }
 
     /**
@@ -82,9 +86,10 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $categories = ['Whole Spices', 'Ground Spices', 'Spice Blends', 'Specialty Items'];
-        $units = ['Kg', 'g', 'lb', 'oz'];
-        return view('admin.products.edit', compact('product', 'categories', 'units'));
+        $categories    = Category::active()->orderBy('sort_order')->pluck('name');
+        $units         = Unit::active()->orderBy('sort_order')->pluck('name');
+        $stockStatuses = StockStatus::active()->orderBy('sort_order')->get();
+        return view('admin.products.edit', compact('product', 'categories', 'units', 'stockStatuses'));
     }
 
     /**

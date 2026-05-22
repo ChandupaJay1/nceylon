@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@yield('title', 'NCEYLON | Authentic Sri Lankan Spices')</title>
+    <title>@yield('title', 'N-CEYLON | Authentic Sri Lankan Spices')</title>
     
     <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/icon/nceylontp.png') }}" />
@@ -64,7 +64,7 @@
                 <div class="relative w-24 h-24 flex items-center justify-center">
                     <img class="w-full h-full object-contain animate-float" 
                          src="{{ asset('assets/icon/nceylontp.png') }}" 
-                         alt="NCEYLON Loading..." />
+                         alt="N-CEYLON Loading..." />
                 </div>
 
                 <!-- Orbiting spice dots -->
@@ -82,7 +82,7 @@
             <!-- Loading text -->
             <div class="flex flex-col items-center gap-3">
                 <h3 class="text-white font-heading font-black text-xl tracking-wider animate-pulse">
-                    NCEYLON
+                    N-CEYLON
                 </h3>
                 <p class="text-white/60 text-xs font-semibold uppercase tracking-[0.3em] animate-pulse" style="animation-delay: 0.2s;">
                     Authentic Ceylon Spices
@@ -106,7 +106,7 @@
                         <a href="{{ url('/') }}" class="flex-shrink-0 flex items-center group">
                             <img src="{{ asset('assets/icon/nceylontp.png') }}"
                                  class="h-10 sm:h-11 lg:h-11 w-auto object-contain origin-left lg:scale-[1.8] group-hover:scale-[1.9] transition-transform duration-300"
-                                 alt="NCEYLON">
+                                 alt="N-CEYLON">
                         </a>
 
                         <!-- Desktop Menu -->
@@ -135,16 +135,26 @@
 
                         <!-- Header CTA Actions -->
                         <div class="hidden lg:flex items-center space-x-6">
-                            <a href="tel:+94771234567" class="flex items-center text-xs font-bold text-secondary/75 hover:text-primary transition-all">
+                            <a href="tel:+94777308365" class="flex items-center text-xs font-bold text-secondary/75 hover:text-primary transition-all">
                                 <div class="w-8 h-8 rounded-full bg-surface-dark border border-secondary/5 flex items-center justify-center mr-2.5">
                                     <i class="fas fa-phone-alt text-primary text-[10px]"></i>
                                 </div>
-                                <span class="hidden xl:inline">+94 77 123 4567</span>
+                                <span class="hidden xl:inline">+94 77 730 8365</span>
                             </a>
                             
                             <a href="{{ url('/contact') }}" class="bg-secondary text-white hover:bg-primary text-[10px] font-black uppercase tracking-widest px-6 py-3 rounded-full hover:shadow-premium transition-all hover:scale-105 active:scale-95 duration-300">
                                 Get Quotation
                             </a>
+
+                            @auth
+                            <form method="POST" action="{{ route('admin.logout') }}" class="inline">
+                                @csrf
+                                <button type="submit" class="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-secondary/60 hover:text-primary transition-colors">
+                                    <i class="fas fa-sign-out-alt text-xs"></i>
+                                    <span class="hidden xl:inline">Logout</span>
+                                </button>
+                            </form>
+                            @endauth
                         </div>
 
                         <!-- Mobile Menu Button -->
@@ -174,11 +184,11 @@
                     <div class="mt-auto space-y-6 pt-8 border-t border-secondary/10">
                         <div class="flex items-center gap-3 text-xs font-semibold text-secondary/60">
                             <i class="fas fa-phone-alt text-primary text-[10px]"></i>
-                            <span>+94 77 123 4567</span>
+                            <span>+94 77 730 8365</span>
                         </div>
                         <div class="flex items-center gap-3 text-xs font-semibold text-secondary/60">
-                            <i class="far fa-envelope text-primary text-[10px]"></i>
-                            <span>info@nceylon.com</span>
+                            <i class="fas fa-envelope text-primary text-[10px]"></i>
+                            <span>nceylonspices@gmail.com</span>
                         </div>
                         <a href="{{ url('/contact') }}" class="w-full bg-primary text-white text-center py-4 rounded-2xl font-black text-xs uppercase tracking-widest shadow-md hover:bg-primary-dark transition-all block">
                             Request Quote
@@ -194,7 +204,7 @@
         </main>
 
         <!-- ═══════════════════════════════════════════
-             FOOTER — NCEYLON Redesign
+             FOOTER — N-CEYLON Redesign
         ═══════════════════════════════════════════ -->
         <footer class="relative bg-secondary text-white overflow-hidden">
 
@@ -239,35 +249,6 @@
             </div>
 
             <!-- ══════════════════════════════════════
-                 SECTION 2 — Spice Image Strip
-            ══════════════════════════════════════ -->
-            <div class="relative h-48 lg:h-56 overflow-hidden border-b border-white/5">
-                <div class="absolute inset-0 grid grid-cols-4 lg:grid-cols-8 h-full">
-                    @foreach([
-                        'assets/spices/imag/spices1.jpg',
-                        'assets/spices/imag/spices2.jpg',
-                        'assets/spices/imag/spices3.jpg',
-                        'assets/spices/imag/spices4.jpg',
-                        'assets/spices/imag/spices5.jpg',
-                        'assets/spices/imag/spices6.jpg',
-                        'assets/spices/imag/spices7.jpg',
-                        'assets/spices/imag/spices8.jpg',
-                    ] as $img)
-                    <div class="relative overflow-hidden group">
-                        <img src="{{ asset($img) }}" class="w-full h-full object-cover opacity-30 group-hover:opacity-60 group-hover:scale-110 transition-all duration-700" alt="Ceylon Spice">
-                        <div class="absolute inset-0 bg-secondary/40"></div>
-                    </div>
-                    @endforeach
-                </div>
-                <!-- Overlay text -->
-                <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-                    <p class="text-white/20 text-5xl sm:text-7xl lg:text-9xl font-heading font-black uppercase tracking-[0.15em] select-none">
-                        NCEYLON
-                    </p>
-                </div>
-            </div>
-
-            <!-- ══════════════════════════════════════
                  SECTION 3 — Main Footer Grid
             ══════════════════════════════════════ -->
             <div class="container mx-auto px-4 py-16 lg:py-20 relative z-10">
@@ -277,7 +258,7 @@
                     <div class="lg:col-span-4 space-y-7">
                         <!-- Logo -->
                         <a href="{{ url('/') }}" class="inline-flex items-center gap-3 group">
-                            <img src="{{ asset('assets/icon/nceylontp.png') }}" class="h-16 w-auto group-hover:scale-105 transition-transform duration-300" alt="NCEYLON">
+                            <img src="{{ asset('assets/icon/nceylontp.png') }}" class="h-16 w-auto group-hover:scale-105 transition-transform duration-300" alt="N-CEYLON">
                         </a>
 
                         <!-- Tagline -->
@@ -299,10 +280,9 @@
                         <div class="flex items-center gap-3 pt-1">
                             <span class="text-[9px] font-black uppercase tracking-widest text-white/25 mr-1">Follow</span>
                             @foreach([
-                                ['fab fa-facebook-f', 'https://www.facebook.com/nerdtechlabs', 'Facebook'],
-                                ['fab fa-instagram', '#', 'Instagram'],
-                                ['fab fa-linkedin-in', '#', 'LinkedIn'],
-                                ['fab fa-youtube', '#', 'YouTube'],
+                                ['fab fa-facebook-f', 'https://www.facebook.com/profile.php?id=100090691998394&mibextid=wwXIfr', 'Facebook'],
+                                ['fab fa-instagram', 'https://www.instagram.com/n_ceylon_spices?igsh=MXUzZGlqdDEyenFsbg==', 'Instagram'],
+                                ['fab fa-tiktok', 'https://www.tiktok.com/@nceylon?_r=1&_t=ZS-96YDdpVqyGL0777308365', 'TikTok'],
                             ] as [$icon, $href, $label])
                             <a href="{{ $href }}" target="_blank" aria-label="{{ $label }}"
                                class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:bg-primary hover:border-primary hover:text-white transition-all duration-300 group">
@@ -373,9 +353,9 @@
 
                         <div class="space-y-4 mb-8">
                             @foreach([
-                                ['fa-phone-alt', '+94 77 123 4567', 'tel:+94771234567'],
-                                ['fa-envelope', 'info@nceylon.com', 'mailto:info@nceylon.com'],
-                                ['fa-map-marker-alt', 'Kandy Road, Kandy, Sri Lanka', null],
+                                ['fa-phone-alt', '+94 77 730 8365', 'tel:+94777308365'],
+                                ['fa-envelope', 'nceylonspices@gmail.com', 'mailto:nceylonspices@gmail.com'],
+                                ['fa-map-marker-alt', 'No.2540, Stage 3, Anuradhapura', 'https://maps.app.goo.gl/Rb8QMgcMj9LHjCHQ8'],
                                 ['fa-clock', 'Mon – Sat, 8am – 6pm IST', null],
                             ] as [$icon, $text, $href])
                             <div class="flex items-start gap-4 group">
@@ -411,7 +391,7 @@
 
                         <!-- Copyright -->
                         <p class="text-[10px] font-semibold text-white/30 text-center sm:text-left">
-                            © <span id="year"></span> NCEYLON Spices (Pvt) Ltd. All rights reserved. &nbsp;·&nbsp; Crafted with care in Sri Lanka.
+                            © <span id="year"></span> N-CEYLON Spices (Pvt) Ltd. All rights reserved. &nbsp;·&nbsp; Crafted with care in Sri Lanka.
                         </p>
 
                         <!-- Centre: legal links -->
@@ -429,6 +409,21 @@
                             <span class="text-[9px] font-black uppercase tracking-widest">EDB Export Certified</span>
                         </div>
 
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══════════════════════════════════════
+                 SECTION 5 — Developer Credit
+            ══════════════════════════════════════ -->
+            <div class="relative border-t border-white/5 bg-black/30">
+                <div class="container mx-auto px-4 py-4">
+                    <div class="flex items-center justify-center gap-3">
+                        <span class="text-[10px] font-semibold text-white/20">Developed &amp; Deployed by Nerdtech Labs</span>
+                        <a href="https://www.facebook.com/nerdtechlabs" target="_blank" rel="noopener noreferrer"
+                           class="flex items-center gap-2 opacity-40 hover:opacity-80 transition-opacity duration-300">
+                            <img src="{{ asset('assets/icon/logo full.png') }}" alt="NerdTech Labs" class="h-5 w-auto object-contain filter brightness-0 invert">
+                        </a>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Privacy Policy | NCEYLON')
+@section('title', 'Privacy Policy | N-CEYLON')
 
 @section('content')
     <!-- Page Header -->

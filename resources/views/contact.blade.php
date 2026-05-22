@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
-@section('title', 'Contact Us | NCEYLON Spices')
-@section('meta_description', 'Get in touch with NCEYLON — Sri Lanka\'s authentic spice exporter. Request a wholesale quotation or trade inquiry today.')
+@section('title', 'Contact Us | N-CEYLON Spices')
+@section('meta_description', 'Get in touch with N-CEYLON — Sri Lanka\'s authentic spice exporter. Request a wholesale quotation or trade inquiry today.')
 
 @section('content')
     <!-- Page Header -->
@@ -30,27 +30,37 @@
                 <div class="lg:w-1/3 flex flex-col gap-6">
                     <div class="bg-white p-10 rounded-[40px] shadow-premium border border-secondary/5 hover-card-premium group">
                         <div class="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-primary/30 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-phone-alt text-xl"></i>
+                            <i class="fas fa-envelope text-xl"></i>
                         </div>
-                        <h4 class="text-xl font-black mb-2 text-secondary">Call Our Trade Desk</h4>
-                        <p class="text-primary font-black text-lg mb-1">+94 77 123 4567</p>
+                        <h4 class="text-xl font-black mb-2 text-secondary">Email Us</h4>
+                        <a href="mailto:nceylonspices@gmail.com" class="text-primary font-black text-lg mb-1 block hover:underline">nceylonspices@gmail.com</a>
                         <p class="text-gray-400 text-xs font-semibold">Available Mon – Sat, 8am to 6pm (IST)</p>
                     </div>
                     <div class="bg-white p-10 rounded-[40px] shadow-premium border border-secondary/5 hover-card-premium group">
                         <div class="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-primary/30 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-envelope text-xl"></i>
+                            <i class="fas fa-share-alt text-xl"></i>
                         </div>
-                        <h4 class="text-xl font-black mb-2 text-secondary">Email Us</h4>
-                        <p class="text-primary font-black text-lg mb-1">info@nceylon.com</p>
-                        <p class="text-gray-400 text-xs font-semibold">We respond within 24 business hours</p>
+                        <h4 class="text-xl font-black mb-2 text-secondary">Follow Us</h4>
+                        <div class="flex items-center gap-3 mt-2">
+                            <a href="https://www.facebook.com/profile.php?id=100090691998394&mibextid=wwXIfr" target="_blank" aria-label="Facebook" class="w-9 h-9 rounded-xl bg-surface-dark border border-secondary/10 flex items-center justify-center text-secondary/50 hover:bg-primary hover:border-primary hover:text-white transition-all duration-300">
+                                <i class="fab fa-facebook-f text-[11px]"></i>
+                            </a>
+                            <a href="https://www.instagram.com/n_ceylon_spices?igsh=MXUzZGlqdDEyenFsbg==" target="_blank" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-surface-dark border border-secondary/10 flex items-center justify-center text-secondary/50 hover:bg-primary hover:border-primary hover:text-white transition-all duration-300">
+                                <i class="fab fa-instagram text-[11px]"></i>
+                            </a>
+                            <a href="https://www.tiktok.com/@nceylon?_r=1&_t=ZS-96YDdpVqyGL0777308365" target="_blank" aria-label="TikTok" class="w-9 h-9 rounded-xl bg-surface-dark border border-secondary/10 flex items-center justify-center text-secondary/50 hover:bg-primary hover:border-primary hover:text-white transition-all duration-300">
+                                <i class="fab fa-tiktok text-[11px]"></i>
+                            </a>
+                        </div>
+                        <p class="text-gray-400 text-xs font-semibold mt-3">We respond within 24 business hours</p>
                     </div>
                     <div class="bg-white p-10 rounded-[40px] shadow-premium border border-secondary/5 hover-card-premium group">
                         <div class="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-primary/30 group-hover:scale-110 transition-transform">
                             <i class="fas fa-map-marker-alt text-xl"></i>
                         </div>
                         <h4 class="text-xl font-black mb-2 text-secondary">Our Trade Office</h4>
-                        <p class="text-primary font-black text-base mb-1 leading-snug">Kandy Road, Kandy,<br>Sri Lanka</p>
-                        <p class="text-gray-400 text-xs font-semibold">Near the Kandy Spice Garden</p>
+                        <a href="https://maps.app.goo.gl/Rb8QMgcMj9LHjCHQ8" target="_blank" class="text-primary font-black text-base mb-1 leading-snug block hover:underline">No.2540, Stage 3,<br>Anuradhapura</a>
+                        <p class="text-gray-400 text-xs font-semibold">View on Google Maps</p>
                     </div>
                 </div>
 
@@ -122,7 +132,7 @@
 
     <!-- Map Section -->
     <div class="h-[450px] w-full bg-secondary/10 relative overflow-hidden">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63371.81779!2d80.6337!3d7.2906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae366266498acd3%3A0x411a3818a1e03c37!2sKandy%2C%20Sri%20Lanka!5e0!3m2!1sen!2slk!4v1680000000000!5m2!1sen!2slk"
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63371.81779!2d80.4037!3d8.3114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3afca2b4b1b1b1b1%3A0x411a3818a1e03c37!2sAnuradhapura%2C%20Sri%20Lanka!5e0!3m2!1sen!2slk!4v1680000000000!5m2!1sen!2slk"
                 class="w-full h-full border-none grayscale hover:grayscale-0 transition-all duration-700"
                 allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
