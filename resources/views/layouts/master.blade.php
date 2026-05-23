@@ -123,6 +123,10 @@
                                 Shop Spices
                                 <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-300 {{ Request::is('products*') ? 'w-full' : '' }}"></span>
                             </a>
+                            <a href="{{ url('/gallery') }}" class="relative py-2 text-xs font-black uppercase tracking-widest text-secondary/80 hover:text-primary transition-colors group">
+                                Gallery
+                                <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-300 {{ Request::is('gallery*') ? 'w-full' : '' }}"></span>
+                            </a>
                             <a href="{{ url('/contact') }}" class="relative py-2 text-xs font-black uppercase tracking-widest text-secondary/80 hover:text-primary transition-colors group">
                                 Contact
                                 <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-300 {{ Request::is('contact') ? 'w-full' : '' }}"></span>
@@ -177,6 +181,7 @@
                         <a href="{{ url('/') }}" class="text-xl font-heading font-black text-secondary hover:text-primary border-b border-secondary/5 pb-3">Home</a>
                         <a href="{{ url('/about') }}" class="text-xl font-heading font-black text-secondary hover:text-primary border-b border-secondary/5 pb-3">Our Story</a>
                         <a href="{{ url('/products') }}" class="text-xl font-heading font-black text-secondary hover:text-primary border-b border-secondary/5 pb-3">Shop Spices</a>
+                        <a href="{{ url('/gallery') }}" class="text-xl font-heading font-black text-secondary hover:text-primary border-b border-secondary/5 pb-3">Gallery</a>
                         <a href="{{ url('/contact') }}" class="text-xl font-heading font-black text-secondary hover:text-primary border-b border-secondary/5 pb-3">Contact</a>
                         <a href="{{ url('/quotations') }}" class="text-xl font-heading font-black text-secondary hover:text-primary border-b border-secondary/5 pb-3">Wholesale Plans</a>
                     </div>
@@ -329,6 +334,7 @@
                             @foreach([
                                 ['Our Story', '/about'],
                                 ['Spice Collection', '/products'],
+                                ['Gallery', '/gallery'],
                                 ['Wholesale Plans', '/quotations'],
                                 ['Get a Quote', '/contact'],
                                 ['Privacy Policy', '/privacy-policy'],

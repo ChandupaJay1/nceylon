@@ -8,26 +8,35 @@ use Illuminate\Support\Str;
 class ImageUploadService
 {
     /**
-     * Upload image to products directory
+     * Upload image to products or gallery directory
      * 
      * @param UploadedFile $file
-     * @param int $productId
+     * @param int $itemId
+     * @param string $type (product or gallery)
      * @return string|null
      */
-    public function upload(UploadedFile $file, int $productId): ?string
+    public function upload(UploadedFile $file, int $itemId, string $type = 'product'): ?string
     {
         try {
-            // Generate unique filename with product ID
-            $filename = 'product-' . $productId . '-' . Str::random(10) . '.' . $file->getClientOriginalExtension();
-            
-            // Store file in public/assets/spices/products
-            $path = $file->storeAs(
-                'assets/spices/products',
-                $filename,
-                'public'
-            );
+            $prefix   = $type === 'gallery' ? 'gallery' : 'product';
+            $filename = $prefix . '-' . $itemId . '-' . Str::random(10) . '.' . $file->getClientOriginalExtension();
 
+            if ($type === 'gallery') {
+                // Save directly into public/assets/gallery/
+                $destination = public_path('assets/gallery');
+                if (!file_exists($destination)) {
+                    mkdir($destination, 0755, true);
+                }
+                $file->move($destination, $filename);
+                // Return the relative path used by asset()
+                return 'assets/gallery/' . $filename;
+            }
+
+            // Products — keep using Laravel storage disk
+            $directory = 'assets/spices/products';
+            $path = $file->storeAs($directory, $filename, 'public');
             return $path;
+
         } catch (\Exception $e) {
             \Log::error('Image upload failed: ' . $e->getMessage());
             return null;
@@ -47,8 +56,19 @@ class ImageUploadService
         }
 
         try {
+            // Gallery images live in public/assets/gallery/
+            if (str_starts_with($imagePath, 'assets/gallery/')) {
+                $fullPath = public_path($imagePath);
+                if (file_exists($fullPath)) {
+                    unlink($fullPath);
+                }
+                return true;
+            }
+
+            // Product images use Laravel storage disk
             \Storage::disk('public')->delete($imagePath);
             return true;
+
         } catch (\Exception $e) {
             \Log::error('Image deletion failed: ' . $e->getMessage());
             return false;

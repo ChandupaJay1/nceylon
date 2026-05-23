@@ -1,121 +1,202 @@
-# NCEYLON - Premium Sri Lankan Spices Export Platform
+# N-CEYLON — Premium Ceylon Spices Web Application
 
-A modern, full-featured e-commerce platform for NCEYLON, a premium Ceylon spices exporter. Built with Laravel 11, Tailwind CSS, and featuring a complete product management system with admin panel.
+A full-stack Laravel web application for **N-CEYLON Spices**, a Sri Lankan spice export company. The platform includes a public-facing website with product catalogue and image gallery, plus a complete admin panel for content management.
 
-## 🌟 Features
+---
 
-### Frontend
-- **Modern, Responsive Design** - Mobile-first approach with Tailwind CSS
-- **Hero Slider** - Cinematic hero section with auto-rotating slides
-- **Product Catalog** - Browse spices with search, filter, and sort functionality
-- **Category Filtering** - Filter products by category
-- **Advanced Search** - Search by product name and description
-- **Sort Options** - Sort by featured, name, or newest
-- **Pagination** - 12 products per page
-- **Premium Preloader** - Animated spice-themed loading screen
-- **Responsive Footer** - 8-column spice image mosaic with newsletter signup
-- **About Page** - Company story and heritage
-- **Contact Page** - Contact form and business information
-- **Quotations Page** - Wholesale pricing plans and request forms
+## Table of Contents
 
-### Admin Panel
-- **Product Management** - Full CRUD operations
-- **Image Upload** - Upload product images with preview
-- **Product Details** - Name, description, category, unit, price, stock status
-- **Featured Products** - Mark products as featured
-- **Sort Order** - Control product display order
-- **Pagination** - 15 products per page in admin list
-- **Form Validation** - Comprehensive validation with error messages
+- [Tech Stack](#tech-stack)
+- [Requirements](#requirements)
+- [Project Setup](#project-setup)
+- [Environment Configuration](#environment-configuration)
+- [Database Setup](#database-setup)
+- [Asset Compilation](#asset-compilation)
+- [Running the Application](#running-the-application)
+- [Project Structure](#project-structure)
+- [Database Schema](#database-schema)
+- [Routes Reference](#routes-reference)
+- [Admin Panel](#admin-panel)
+- [Frontend Pages](#frontend-pages)
+- [Models & Scopes](#models--scopes)
+- [Services](#services)
+- [Seeders](#seeders)
+- [Image Management](#image-management)
+- [Authentication](#authentication)
+- [Artisan Commands Reference](#artisan-commands-reference)
+- [Troubleshooting](#troubleshooting)
 
-### Database
-- **Products Table** - Complete product information storage
-- **Image Management** - Automatic image upload and deletion
-- **Timestamps** - Track creation and update times
-- **Scopes** - Query scopes for active, featured, and category filtering
+---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
-- **Backend**: Laravel 11
-- **Frontend**: Blade Templates, Tailwind CSS
-- **Database**: MySQL
-- **Build Tool**: Vite
-- **Package Manager**: Composer, npm
-- **Version Control**: Git
+| Layer | Technology | Version |
+|---|---|---|
+| Backend Framework | Laravel | 12.x |
+| Language | PHP | ^8.2 |
+| Database | SQLite (default) / MySQL | — |
+| Frontend CSS | Tailwind CSS | 4.x |
+| Build Tool | Vite | 7.x |
+| Icons | Font Awesome | 6.4.0 |
+| Slider | Swiper.js | 11.x |
+| HTTP Client | Axios | 1.x |
+| Package Manager (PHP) | Composer | 2.x |
+| Package Manager (JS) | npm | — |
+| Dev Server | XAMPP / php artisan serve | — |
 
-## � Project Structure
+---
 
-```
-nceylon/
-├── app/
-│   ├── Http/
-│   │   ├── Controllers/
-│   │   │   ├── ProductController.php          # Frontend product controller
-│   │   │   └── Admin/ProductController.php    # Admin product controller
-│   │   └── Requests/
-│   │       ├── StoreProductRequest.php        # Create validation
-│   │       └── UpdateProductRequest.php       # Update validation
-│   ├── Models/
-│   │   └── Product.php                        # Product model with scopes
-│   └── Services/
-│       └── ImageUploadService.php             # Image upload handling
-├── database/
-│   ├── migrations/
-│   │   └── 2026_05_22_064749_create_products_table.php
-│   └── seeders/
-│       └── ProductSeeder.php                  # Sample data
-├── resources/
-│   ├── views/
-│   │   ├── layouts/master.blade.php           # Main layout
-│   │   ├── index.blade.php                    # Homepage
-│   │   ├── products.blade.php                 # Product listing
-│   │   ├── about.blade.php                    # About page
-│   │   ├── contact.blade.php                  # Contact page
-│   │   ├── quotations.blade.php               # Quotations page
-│   │   └── admin/products/                    # Admin views
-│   ├── css/app.css                            # Tailwind CSS
-│   └── js/app.js                              # JavaScript
-├── public/
-│   ├── assets/
-│   │   ├── spices/imag/                       # Sample spice images
-│   │   └── spices/products/                   # Uploaded product images
-│   └── build/                                 # Compiled assets
-├── routes/
-│   └── web.php                                # All routes
-└── config/                                    # Configuration files
-```
+## Requirements
 
-## 🚀 Installation & Setup
+Before setting up the project, make sure you have the following installed:
 
-### Prerequisites
-- PHP 8.2+
-- Composer
-- Node.js & npm
-- MySQL 8.0+
-- Git
+- **PHP** 8.2 or higher
+- **Composer** 2.x
+- **Node.js** 18+ and **npm**
+- **XAMPP** (or any local server with Apache + PHP)
+- **Git**
 
-### Steps
+Verify your versions:
 
-1. **Clone Repository**
 ```bash
-git clone git@github.com:ChandupaJay1/nceylon.git
+php -v
+composer -V
+node -v
+npm -v
+```
+
+---
+
+## Project Setup
+
+### 1. Clone the repository
+
+```bash
+git clone <repository-url> nceylon
 cd nceylon
 ```
 
-2. **Install Dependencies**
+### 2. Install PHP dependencies
+
 ```bash
 composer install
+```
+
+### 3. Install JavaScript dependencies
+
+```bash
 npm install
 ```
 
-3. **Environment Setup**
+### 4. Copy environment file
+
 ```bash
 cp .env.example .env
+```
+
+### 5. Generate application key
+
+```bash
 php artisan key:generate
 ```
 
-4. **Configure Database**
-Edit `.env`:
+### 6. Run database migrations
+
+```bash
+php artisan migrate
 ```
+
+### 7. Seed the database
+
+```bash
+php artisan db:seed --class=AdminSeeder
+php artisan db:seed --class=LookupSeeder
+php artisan db:seed --class=ProductSeeder
+php artisan db:seed --class=GallerySeeder
+```
+
+Or seed everything at once (if DatabaseSeeder is configured):
+
+```bash
+php artisan db:seed
+```
+
+### 8. Create the storage symlink
+
+```bash
+php artisan storage:link
+```
+
+### 9. Build frontend assets
+
+```bash
+npm run build
+```
+
+### 10. Done — open in browser
+
+```
+http://localhost/nceylon/public
+```
+
+Or if using `php artisan serve`:
+
+```
+http://localhost:8000
+```
+
+---
+
+## One-Command Setup
+
+The `composer.json` includes a `setup` script that runs all the above steps automatically:
+
+```bash
+composer run setup
+```
+
+This executes:
+1. `composer install`
+2. Copies `.env.example` → `.env` (if not already present)
+3. `php artisan key:generate`
+4. `php artisan migrate --force`
+5. `npm install`
+6. `npm run build`
+
+> **Note:** You still need to run the seeders manually after `composer run setup`.
+
+---
+
+## Environment Configuration
+
+Open `.env` and configure the following key values:
+
+### Application
+
+```env
+APP_NAME=NCEYLON
+APP_ENV=local
+APP_KEY=                        # Auto-generated by php artisan key:generate
+APP_DEBUG=true
+APP_URL=http://localhost/nceylon/public
+```
+
+### Database
+
+The project uses **SQLite by default** — no database server required.
+
+```env
+DB_CONNECTION=sqlite
+# DB_HOST=127.0.0.1
+# DB_PORT=3306
+# DB_DATABASE=nceylon_db
+# DB_USERNAME=root
+# DB_PASSWORD=
+```
+
+To switch to **MySQL** (recommended for production):
+
+```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
@@ -124,165 +205,720 @@ DB_USERNAME=root
 DB_PASSWORD=your_password
 ```
 
-5. **Run Migrations**
+Then create the database in MySQL:
+
+```sql
+CREATE DATABASE nceylon_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+
+### Session & Cache
+
+```env
+SESSION_DRIVER=database
+CACHE_STORE=database
+QUEUE_CONNECTION=database
+```
+
+### Mail (optional)
+
+```env
+MAIL_MAILER=log          # Logs emails to storage/logs/laravel.log (dev)
+MAIL_FROM_ADDRESS="nceylonspices@gmail.com"
+MAIL_FROM_NAME="N-CEYLON"
+```
+
+---
+
+## Database Setup
+
+### SQLite (default — zero config)
+
+The SQLite file is already present at `database/database.sqlite`. Just run migrations:
+
 ```bash
 php artisan migrate
 ```
 
-6. **Seed Sample Data**
+### MySQL (production)
+
+1. Create the database
+2. Update `.env` with MySQL credentials
+3. Run migrations:
+
 ```bash
-php artisan db:seed --class=ProductSeeder
+php artisan migrate
 ```
 
-7. **Build Assets**
+### Reset everything
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+> This drops all tables, re-runs all migrations, and runs `DatabaseSeeder`.
+
+---
+
+## Asset Compilation
+
+### Development (with hot reload)
+
+```bash
+npm run dev
+```
+
+Starts the Vite dev server. Keep this running while developing.
+
+### Production build
+
 ```bash
 npm run build
 ```
 
-8. **Start Development Server**
+Compiles and minifies all CSS and JS into `public/build/`.
+
+### Full dev environment (all services at once)
+
+```bash
+composer run dev
+```
+
+This starts concurrently:
+- `php artisan serve` — Laravel dev server
+- `php artisan queue:listen` — Queue worker
+- `php artisan pail` — Log viewer
+- `npm run dev` — Vite HMR
+
+---
+
+## Running the Application
+
+### Option A — XAMPP (recommended for this project)
+
+1. Place the project in `C:\xampp\htdocs\nceylon`
+2. Start Apache in XAMPP Control Panel
+3. Visit: `http://localhost/nceylon/public`
+
+### Option B — PHP built-in server
+
 ```bash
 php artisan serve
 ```
 
-Visit `http://localhost:8000`
+Visit: `http://localhost:8000`
 
-## 📊 Database Schema
+### Option C — Full dev stack
 
-### Products Table
-```sql
-- id (Primary Key)
-- name (string)
-- slug (string, unique)
-- description (text, nullable)
-- image_path (string, nullable)
-- category (string)
-- unit (string) - Kg, g, lb, oz
-- price (decimal, nullable)
-- stock_status (enum) - In Stock, Out of Stock, Pre-Order
-- featured (boolean)
-- sort_order (integer)
-- is_active (boolean)
-- created_at, updated_at (timestamps)
+```bash
+composer run dev
 ```
 
-## 🎯 Routes
+---
 
-### Frontend Routes
+## Project Structure
+
 ```
-GET  /                    - Homepage
-GET  /about               - About page
-GET  /products            - Product listing with filters
-GET  /contact             - Contact page
-GET  /quotations          - Quotations page
-GET  /privacy-policy      - Privacy policy
+nceylon/
+│
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── Controller.php              # Base controller
+│   │   │   ├── ProductController.php       # Frontend product listing & detail
+│   │   │   ├── GalleryController.php       # Frontend gallery page
+│   │   │   └── Admin/
+│   │   │       ├── AuthController.php      # Admin login / logout
+│   │   │       ├── ProductController.php   # Admin product CRUD
+│   │   │       ├── CategoryController.php  # Admin category CRUD
+│   │   │       ├── UnitController.php      # Admin unit CRUD
+│   │   │       ├── StockStatusController.php # Admin stock status CRUD
+│   │   │       └── GalleryController.php   # Admin gallery CRUD
+│   │   ├── Middleware/
+│   │   │   └── AdminMiddleware.php         # Auth guard for admin routes
+│   │   └── Requests/
+│   │       ├── StoreProductRequest.php     # Product create validation
+│   │       └── UpdateProductRequest.php    # Product update validation
+│   ├── Models/
+│   │   ├── User.php
+│   │   ├── Product.php
+│   │   ├── Category.php
+│   │   ├── Unit.php
+│   │   ├── StockStatus.php
+│   │   └── Gallery.php
+│   ├── Providers/
+│   │   └── AppServiceProvider.php
+│   └── Services/
+│       └── ImageUploadService.php          # Handles image upload & deletion
+│
+├── database/
+│   ├── migrations/
+│   │   ├── 0001_01_01_000000_create_users_table.php
+│   │   ├── 0001_01_01_000001_create_cache_table.php
+│   │   ├── 0001_01_01_000002_create_jobs_table.php
+│   │   ├── 2026_05_22_064749_create_products_table.php
+│   │   ├── 2026_05_22_075344_create_categories_table.php
+│   │   ├── 2026_05_22_075344_create_units_table.php
+│   │   ├── 2026_05_22_075345_create_stock_statuses_table.php
+│   │   ├── 2026_05_22_075345_change_products_stock_status_to_string.php
+│   │   └── 2026_05_23_061440_create_galleries_table.php
+│   └── seeders/
+│       ├── DatabaseSeeder.php
+│       ├── AdminSeeder.php                 # Creates admin user
+│       ├── LookupSeeder.php                # Seeds categories, units, stock statuses
+│       ├── ProductSeeder.php               # Seeds 10 sample products
+│       └── GallerySeeder.php               # Seeds 13 gallery images
+│
+├── public/
+│   ├── assets/
+│   │   ├── gallery/                        # Gallery images (1.jpeg – 13.jpeg)
+│   │   ├── spices/imag/                    # Product & background images
+│   │   └── icon/                           # Logo files
+│   ├── build/                              # Compiled Vite assets
+│   ├── storage -> ../storage/app/public    # Symlink for product uploads
+│   └── index.php
+│
+├── resources/
+│   ├── css/app.css                         # Tailwind CSS entry point
+│   ├── js/app.js                           # JS entry point
+│   └── views/
+│       ├── layouts/
+│       │   └── master.blade.php            # Main layout (nav, footer)
+│       ├── admin/
+│       │   ├── layouts/sidebar.blade.php   # Admin sidebar
+│       │   ├── auth/login.blade.php        # Admin login page
+│       │   ├── products/                   # Product CRUD views
+│       │   ├── categories/                 # Category CRUD views
+│       │   ├── units/                      # Unit CRUD views
+│       │   ├── stock-statuses/             # Stock status CRUD views
+│       │   └── gallery/                    # Gallery CRUD views
+│       ├── index.blade.php                 # Homepage
+│       ├── about.blade.php                 # About page
+│       ├── products.blade.php              # Product listing
+│       ├── gallery.blade.php               # Gallery page
+│       ├── contact.blade.php               # Contact page
+│       ├── quotations.blade.php            # Wholesale quotations
+│       └── privacy-policy.blade.php        # Privacy policy
+│
+├── routes/
+│   └── web.php                             # All application routes
+│
+├── storage/
+│   └── app/public/assets/spices/products/ # Uploaded product images
+│
+├── .env                                    # Environment config (not in git)
+├── .env.example                            # Environment template
+├── composer.json
+├── package.json
+├── vite.config.js
+└── artisan
 ```
 
-### Admin Routes
+---
+
+## Database Schema
+
+### `users`
+| Column | Type | Notes |
+|---|---|---|
+| id | bigint | Primary key |
+| name | varchar | Admin name |
+| email | varchar | Unique |
+| password | varchar | Bcrypt hashed |
+| created_at / updated_at | timestamp | — |
+
+### `products`
+| Column | Type | Notes |
+|---|---|---|
+| id | bigint | Primary key |
+| name | varchar | Product name |
+| slug | varchar | URL-friendly, auto-generated |
+| description | text | Optional |
+| image_path | varchar | Relative path via storage |
+| category | varchar | FK-like string to categories |
+| unit | varchar | FK-like string to units |
+| price | decimal(10,2) | Optional |
+| stock_status | varchar | FK-like string to stock_statuses |
+| featured | boolean | Default false |
+| sort_order | integer | Default 0 |
+| is_active | boolean | Default true |
+| created_at / updated_at | timestamp | — |
+
+### `categories`
+| Column | Type | Notes |
+|---|---|---|
+| id | bigint | Primary key |
+| name | varchar | e.g. Whole Spices |
+| sort_order | integer | Display order |
+| is_active | boolean | Default true |
+
+### `units`
+| Column | Type | Notes |
+|---|---|---|
+| id | bigint | Primary key |
+| name | varchar | e.g. Kg, g, lb |
+| sort_order | integer | Display order |
+| is_active | boolean | Default true |
+
+### `stock_statuses`
+| Column | Type | Notes |
+|---|---|---|
+| id | bigint | Primary key |
+| name | varchar | e.g. In Stock |
+| color | varchar | green / red / yellow / blue |
+| sort_order | integer | Display order |
+| is_active | boolean | Default true |
+
+### `galleries`
+| Column | Type | Notes |
+|---|---|---|
+| id | bigint | Primary key |
+| title | varchar | Image title |
+| description | text | Optional |
+| image_path | varchar | Relative path e.g. `assets/gallery/1.jpeg` |
+| category | varchar | General / Products / Factory / Team / Events / Packaging / Certifications |
+| sort_order | integer | Default 0 |
+| is_active | boolean | Default true |
+| created_at / updated_at | timestamp | — |
+
+---
+
+## Routes Reference
+
+### Public Routes
+
+| Method | URI | Name | Description |
+|---|---|---|---|
+| GET | `/` | `home` | Homepage |
+| GET | `/about` | `about` | About page |
+| GET | `/products` | `products` | Product listing (search, filter, sort) |
+| GET | `/products/{slug}` | `product.show` | Product detail page |
+| GET | `/gallery` | `gallery` | Image gallery |
+| GET | `/contact` | `contact` | Contact page |
+| GET | `/quotations` | `quotations` | Wholesale quotations |
+| GET | `/privacy-policy` | `privacy-policy` | Privacy policy |
+
+### Admin Auth Routes
+
+| Method | URI | Name | Description |
+|---|---|---|---|
+| GET | `/admin/login` | `admin.login` | Login form |
+| POST | `/admin/login` | `admin.login.post` | Process login |
+| POST | `/admin/logout` | `admin.logout` | Logout |
+
+### Admin Protected Routes (requires login)
+
+#### Products
+| Method | URI | Name |
+|---|---|---|
+| GET | `/admin/products` | `admin.products.index` |
+| GET | `/admin/products/create` | `admin.products.create` |
+| POST | `/admin/products` | `admin.products.store` |
+| GET | `/admin/products/{id}/edit` | `admin.products.edit` |
+| PUT | `/admin/products/{id}` | `admin.products.update` |
+| DELETE | `/admin/products/{id}` | `admin.products.destroy` |
+
+#### Categories
+| Method | URI | Name |
+|---|---|---|
+| GET | `/admin/categories` | `admin.categories.index` |
+| GET | `/admin/categories/create` | `admin.categories.create` |
+| POST | `/admin/categories` | `admin.categories.store` |
+| GET | `/admin/categories/{id}/edit` | `admin.categories.edit` |
+| PUT | `/admin/categories/{id}` | `admin.categories.update` |
+| DELETE | `/admin/categories/{id}` | `admin.categories.destroy` |
+
+#### Units
+Same pattern as categories at `/admin/units`.
+
+#### Stock Statuses
+Same pattern at `/admin/stock-statuses`.
+
+#### Gallery
+| Method | URI | Name |
+|---|---|---|
+| GET | `/admin/gallery` | `admin.gallery.index` |
+| GET | `/admin/gallery/create` | `admin.gallery.create` |
+| POST | `/admin/gallery` | `admin.gallery.store` |
+| GET | `/admin/gallery/{id}/edit` | `admin.gallery.edit` |
+| PUT | `/admin/gallery/{id}` | `admin.gallery.update` |
+| DELETE | `/admin/gallery/{id}` | `admin.gallery.destroy` |
+
+---
+
+## Admin Panel
+
+### Access
+
 ```
-GET    /admin/products              - List products
-GET    /admin/products/create       - Create form
-POST   /admin/products              - Store product
-GET    /admin/products/{id}/edit    - Edit form
-PUT    /admin/products/{id}         - Update product
-DELETE /admin/products/{id}         - Delete product
+URL:      http://localhost/nceylon/public/admin/login
+Email:    admin@nceylon.com
+Password: Admin@2024
 ```
 
-## 🖼️ Sample Products
+> Change the default password after first login.
 
-10 pre-loaded products:
-1. Ceylon Cinnamon Sticks
-2. Black Pepper Whole
-3. Green Cardamom Pods
-4. Whole Cloves
-5. Turmeric Powder
-6. Cinnamon Powder
-7. Curry Powder - Mild
-8. Curry Powder - Hot
-9. Nutmeg Whole
-10. Red Chilli Powder
+### Sections
 
-## 📸 Image Management
+| Section | URL | Description |
+|---|---|---|
+| Products | `/admin/products` | Full product CRUD with image upload |
+| Gallery | `/admin/gallery` | Gallery image CRUD |
+| Categories | `/admin/categories` | Product category management |
+| Units | `/admin/units` | Measurement unit management |
+| Stock Statuses | `/admin/stock-statuses` | Stock status management with color coding |
 
-- **Upload Location**: `public/assets/spices/products/`
-- **Filename Format**: `product-{id}-{random}.{extension}`
-- **Supported Formats**: JPEG, PNG, JPG, GIF, WebP
-- **Max Size**: 5MB
-- **Auto-deletion**: Old images deleted when updating
+### Admin Middleware
 
-## 🔍 Search & Filter Features
+`AdminMiddleware` checks `auth()->check()`. If the user is not authenticated, they are redirected to `/admin/login`. All admin routes are protected by this middleware.
 
-### Search
-- Search by product name
-- Search by description
-- Real-time filtering
+---
 
-### Categories
+## Frontend Pages
+
+| Page | URL | Description |
+|---|---|---|
+| Home | `/` | Hero, featured products, about teaser, CTA |
+| About | `/about` | Company story and values |
+| Products | `/products` | Filterable, searchable product grid |
+| Product Detail | `/products/{slug}` | Individual product page |
+| Gallery | `/gallery` | Tile-based image gallery with lightbox |
+| Contact | `/contact` | Contact form and details |
+| Quotations | `/quotations` | Wholesale inquiry form |
+| Privacy Policy | `/privacy-policy` | Legal page |
+
+### Gallery Features
+
+- **Tile grid layout** — 4-column CSS grid with fixed-height rows
+- **Featured tile** — First image in every 7 spans 2×2 (large featured tile)
+- **Hover effects** — Gradient overlay, category pill, zoom icon, title slide-up
+- **Lightbox** — Full-screen viewer with prev/next navigation
+- **Keyboard support** — `←` `→` to navigate, `Esc` to close
+- **Touch/swipe** — Swipe left/right on mobile
+
+### Product Listing Features
+
+- Search by name or description
+- Filter by category
+- Sort by: Featured, Name A–Z, Name Z–A, Featured Only, Newest
+- Pagination (12 per page)
+- "Request Quote" CTA on each card
+
+---
+
+## Models & Scopes
+
+### `Product`
+
+```php
+Product::active()->get()           // is_active = true
+Product::featured()->get()         // featured = true
+Product::category('Whole Spices')->get()
+Product::active()->featured()->ordered()->get()
+```
+
+### `Category`
+
+```php
+Category::active()->orderBy('sort_order')->pluck('name')
+```
+
+### `Unit`
+
+```php
+Unit::active()->orderBy('sort_order')->pluck('name')
+```
+
+### `StockStatus`
+
+```php
+StockStatus::active()->orderBy('sort_order')->get()
+```
+
+### `Gallery`
+
+```php
+Gallery::active()->get()                    // is_active = true
+Gallery::category('Products')->get()        // by category
+Gallery::ordered()->get()                   // sort_order ASC, then created_at DESC
+Gallery::active()->ordered()->get()         // combined
+```
+
+---
+
+## Services
+
+### `ImageUploadService`
+
+Located at `app/Services/ImageUploadService.php`.
+
+#### `upload(UploadedFile $file, int $itemId, string $type = 'product'): ?string`
+
+| Type | Storage Location | Path Format |
+|---|---|---|
+| `product` | `storage/app/public/assets/spices/products/` | `assets/spices/products/product-{id}-{random}.ext` |
+| `gallery` | `public/assets/gallery/` | `assets/gallery/gallery-{id}-{random}.ext` |
+
+- Product images use Laravel's `storage` disk (accessed via `asset('storage/...')`)
+- Gallery images are stored directly in `public/assets/gallery/` (accessed via `asset('assets/gallery/...')`)
+
+#### `delete(?string $imagePath): bool`
+
+- Detects path prefix to determine storage location
+- Gallery paths (`assets/gallery/...`) → `unlink(public_path(...))`
+- Product paths → `Storage::disk('public')->delete(...)`
+
+---
+
+## Seeders
+
+| Seeder | Command | Description |
+|---|---|---|
+| `AdminSeeder` | `php artisan db:seed --class=AdminSeeder` | Creates admin user |
+| `LookupSeeder` | `php artisan db:seed --class=LookupSeeder` | Seeds categories, units, stock statuses |
+| `ProductSeeder` | `php artisan db:seed --class=ProductSeeder` | Seeds 10 sample spice products |
+| `GallerySeeder` | `php artisan db:seed --class=GallerySeeder` | Seeds 13 gallery images from `public/assets/gallery/` |
+
+### Default Admin Credentials (from AdminSeeder)
+
+```
+Email:    admin@nceylon.com
+Password: Admin@2024
+```
+
+### Default Product Categories (from LookupSeeder)
+
 - Whole Spices
 - Ground Spices
 - Spice Blends
 - Specialty Items
 
-### Sort Options
-- Featured (default)
-- Name A-Z
-- Name Z-A
-- Featured Only
-- Newest
+### Default Units (from LookupSeeder)
 
-## � Design Features
+- Kg, g, lb, oz, MT
 
-- **Modern UI** - Clean, professional design
-- **Responsive** - Mobile, tablet, desktop optimized
-- **Animations** - Smooth transitions and hover effects
-- **Color Scheme** - Spice-themed colors (terracotta, gold, green)
-- **Typography** - Professional font hierarchy
-- **Accessibility** - WCAG compliant
+### Default Stock Statuses (from LookupSeeder)
 
-## 🔐 Security
-
-- Form validation on both client and server
-- CSRF protection
-- SQL injection prevention
-- File upload validation
-- Error handling and logging
-
-## 📝 API Documentation
-
-See `PRODUCT_SYSTEM_GUIDE.md` for detailed API documentation and usage examples.
-
-## 🤝 Contributing
-
-1. Create a feature branch (`git checkout -b feature/amazing-feature`)
-2. Commit changes (`git commit -m 'Add amazing feature'`)
-3. Push to branch (`git push origin feature/amazing-feature`)
-4. Open a Pull Request
-
-## 📄 License
-
-This project is proprietary and confidential.
-
-## 👤 Author
-
-**Chandupa Jay**
-- GitHub: [@ChandupaJay1](https://github.com/ChandupaJay1)
-
-## 📞 Support
-
-For support, email info@nceylon.com or visit the contact page.
-
-## 🎯 Future Enhancements
-
-- [ ] Shopping cart functionality
-- [ ] Payment gateway integration
-- [ ] User authentication
-- [ ] Order management system
-- [ ] Email notifications
-- [ ] Analytics dashboard
-- [ ] Multi-language support
-- [ ] API endpoints for mobile app
+| Status | Badge Color |
+|---|---|
+| In Stock | Green |
+| Out of Stock | Red |
+| Pre-Order | Yellow |
 
 ---
 
-**Status**: ✅ Production Ready
-**Last Updated**: May 22, 2026
-**Version**: 1.0.0
+## Image Management
+
+### Gallery Images
+
+- **Location:** `public/assets/gallery/`
+- **Current files:** `1.jpeg` through `13.jpeg`
+- **Access URL:** `asset('assets/gallery/1.jpeg')`
+- **Upload via:** Admin panel → Gallery → Add Image
+- **Max size:** 5MB
+- **Formats:** JPEG, PNG, JPG, GIF, WebP
+
+To add images manually, place files in `public/assets/gallery/` and add records via the admin panel or seeder.
+
+### Product Images
+
+- **Location:** `storage/app/public/assets/spices/products/`
+- **Access URL:** `asset('storage/assets/spices/products/filename.jpg')`
+- **Upload via:** Admin panel → Products → Add/Edit Product
+- **Requires:** `php artisan storage:link` to be run once
+
+### Background / Static Images
+
+- **Location:** `public/assets/spices/imag/`
+- **Files:** `spices.jpg`, `spices1.jpg` – `spices8.jpg`, `chilli.jpg`
+- These are used as page backgrounds and are not managed via admin
+
+---
+
+## Authentication
+
+The application uses Laravel's built-in `Auth` system with a single user table.
+
+- **Guard:** `web` (default)
+- **Login route:** `POST /admin/login`
+- **Logout route:** `POST /admin/logout`
+- **Protection:** `AdminMiddleware` on all `/admin/*` routes (except login)
+- **Session:** Database-backed (`SESSION_DRIVER=database`)
+
+There is no public user registration. Admin accounts are created via `AdminSeeder` or directly in the database.
+
+---
+
+## Artisan Commands Reference
+
+### Setup & Maintenance
+
+```bash
+# Generate app key
+php artisan key:generate
+
+# Run all migrations
+php artisan migrate
+
+# Rollback last migration
+php artisan migrate:rollback
+
+# Fresh migration + seed
+php artisan migrate:fresh --seed
+
+# Create storage symlink
+php artisan storage:link
+
+# Clear all caches
+php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
+
+# Compile views (check for errors)
+php artisan view:cache
+```
+
+### Seeding
+
+```bash
+php artisan db:seed --class=AdminSeeder
+php artisan db:seed --class=LookupSeeder
+php artisan db:seed --class=ProductSeeder
+php artisan db:seed --class=GallerySeeder
+```
+
+### Inspection
+
+```bash
+# List all routes
+php artisan route:list
+
+# Filter routes by name
+php artisan route:list --name=gallery
+php artisan route:list --name=admin
+
+# Open interactive shell
+php artisan tinker
+
+# Check gallery count
+php artisan tinker --execute="echo App\Models\Gallery::count();"
+php artisan tinker --execute="echo App\Models\Product::count();"
+```
+
+### Development
+
+```bash
+# Start dev server
+php artisan serve
+
+# Watch logs
+php artisan pail
+```
+
+---
+
+## Troubleshooting
+
+### Images not showing
+
+```bash
+# Recreate the storage symlink
+php artisan storage:link
+```
+
+Check that `public/storage` points to `storage/app/public`.
+
+For gallery images, verify files exist in `public/assets/gallery/` and the `image_path` column in the `galleries` table starts with `assets/gallery/`.
+
+### 500 Server Error
+
+```bash
+# Check logs
+php artisan pail
+# or
+type storage\logs\laravel.log
+```
+
+Common causes:
+- Missing `.env` file → run `cp .env.example .env && php artisan key:generate`
+- Missing `APP_KEY` → run `php artisan key:generate`
+- Database not migrated → run `php artisan migrate`
+
+### Blank page / CSS not loading
+
+```bash
+# Rebuild assets
+npm run build
+
+# Or start dev server
+npm run dev
+```
+
+Make sure `public/build/manifest.json` exists.
+
+### Admin login not working
+
+```bash
+# Re-seed the admin user
+php artisan db:seed --class=AdminSeeder
+```
+
+Default credentials: `admin@nceylon.com` / `Admin@2024`
+
+### Database errors
+
+```bash
+# Reset and re-migrate
+php artisan migrate:fresh
+
+# Then re-seed
+php artisan db:seed --class=AdminSeeder
+php artisan db:seed --class=LookupSeeder
+php artisan db:seed --class=ProductSeeder
+php artisan db:seed --class=GallerySeeder
+```
+
+### PHP upload size too small
+
+Edit `php.ini` (found in your XAMPP `php/` folder):
+
+```ini
+upload_max_filesize = 10M
+post_max_size = 12M
+```
+
+Restart Apache after saving.
+
+### Vite assets not found in production
+
+```bash
+npm run build
+```
+
+Ensure `public/build/manifest.json` exists and `APP_URL` in `.env` is correct.
+
+---
+
+## Contact & Business Info
+
+| | |
+|---|---|
+| **Company** | N-CEYLON Spices (Pvt) Ltd |
+| **Phone** | +94 77 730 8365 |
+| **Email** | nceylonspices@gmail.com |
+| **Address** | No.2540, Stage 3, Anuradhapura, Sri Lanka |
+| **Hours** | Mon – Sat, 8am – 6pm IST |
+| **Facebook** | [N-CEYLON Spices](https://www.facebook.com/profile.php?id=100090691998394) |
+| **Instagram** | [@n_ceylon_spices](https://www.instagram.com/n_ceylon_spices) |
+| **TikTok** | [@nceylon](https://www.tiktok.com/@nceylon) |
+
+---
+
+## Developer
+
+Developed & Deployed by **NerdTech Labs**
+[facebook.com/nerdtechlabs](https://www.facebook.com/nerdtechlabs)
+
+---
+
+*Last updated: May 23, 2026*

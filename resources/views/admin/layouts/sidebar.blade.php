@@ -21,6 +21,14 @@
             <i class="fas fa-box-open w-4 text-center"></i> Products
         </a>
 
+        {{-- Gallery --}}
+        <p class="text-white/25 text-[9px] font-black uppercase tracking-widest px-3 pt-4 pb-2">Media</p>
+        <a href="{{ route('admin.gallery.index') }}"
+           class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition-all
+                  {{ Request::is('admin/gallery*') ? 'bg-primary text-white' : 'text-white/60 hover:bg-white/8 hover:text-white' }}">
+            <i class="fas fa-images w-4 text-center"></i> Gallery
+        </a>
+
         {{-- Settings --}}
         <p class="text-white/25 text-[9px] font-black uppercase tracking-widest px-3 pt-4 pb-2">Settings</p>
         <a href="{{ route('admin.categories.index') }}"

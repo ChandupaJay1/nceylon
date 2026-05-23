@@ -2,11 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\UnitController;
 use App\Http\Controllers\Admin\StockStatusController;
+use App\Http\Controllers\Admin\GalleryController as AdminGalleryController;
 
 Route::get('/', function () {
     return view('index');
@@ -18,6 +20,8 @@ Route::get('/about', function () {
 
 Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::get('/products/{slug}', [ProductController::class, 'show'])->name('product.show');
+
+Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
 
 Route::get('/contact', function () {
     return view('contact');
@@ -44,4 +48,5 @@ Route::prefix('admin')->name('admin.')->middleware(\App\Http\Middleware\AdminMid
     Route::resource('categories',    CategoryController::class)->except(['show']);
     Route::resource('units',         UnitController::class)->except(['show']);
     Route::resource('stock-statuses', StockStatusController::class)->except(['show']);
+    Route::resource('gallery',       AdminGalleryController::class);
 });
