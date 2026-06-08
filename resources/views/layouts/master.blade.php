@@ -206,7 +206,7 @@
         @show
 
         <!-- Main Content -->
-        <main class="flex-grow @section('main_padding')pt-24@show">
+        <main class="flex-grow @yield('main_padding', 'pt-24')">
             @yield('content')
         </main>
 

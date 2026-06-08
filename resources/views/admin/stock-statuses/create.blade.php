@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('navbar')@endsection
 @section('footer')@endsection
-@section('main_padding')pt-0@endsection
+@section('main_padding', 'pt-0')
 @section('title', 'Admin — Add Stock Status')
 @section('content')
 <div class="min-h-screen bg-surface flex">
