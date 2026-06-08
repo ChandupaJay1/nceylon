@@ -48,4 +48,16 @@
         </a>
     </nav>
 
+    {{-- Footer --}}
+    <div class="p-4 border-t border-white/10">
+        <form method="POST" action="{{ route('admin.logout') }}">
+            @csrf
+            <button type="submit" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-white/50 hover:bg-red-500/20 hover:text-red-400 transition-all">
+                <i class="fas fa-sign-out-alt w-4 text-center"></i> Logout
+            </button>
+        </form>
+        <a href="{{ url('/') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-white/50 hover:bg-white/8 hover:text-white transition-all mt-1">
+            <i class="fas fa-globe w-4 text-center"></i> View Website
+        </a>
+    </div>
 </aside>
