@@ -150,15 +150,7 @@
                                 Get Quotation
                             </a>
 
-                            @auth
-                            <form method="POST" action="{{ route('admin.logout') }}" class="inline">
-                                @csrf
-                                <button type="submit" class="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-secondary/60 hover:text-primary transition-colors">
-                                    <i class="fas fa-sign-out-alt text-xs"></i>
-                                    <span class="hidden xl:inline">Logout</span>
-                                </button>
-                            </form>
-                            @endauth
+
                         </div>
 
                         <!-- Mobile Menu Button -->
