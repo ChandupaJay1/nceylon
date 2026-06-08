@@ -98,6 +98,7 @@
 
     <div class="flex flex-col min-h-screen">
         <!-- Floating Header / Navbar -->
+        @section('navbar')
         <header id="main-header" class="fixed top-0 inset-x-0 z-50 w-full transition-all duration-500 px-0 pt-0">
             <nav id="nav-element" class="w-full bg-white/80 backdrop-blur-xl border-b border-secondary/5 py-2 lg:py-3 transition-all duration-500 lg:overflow-visible">
                 <div class="container mx-auto px-4 sm:px-6">
@@ -202,15 +203,17 @@
                 </div>
             </div>
         </header>
+        @show
 
         <!-- Main Content -->
-        <main class="flex-grow pt-24">
+        <main class="flex-grow @section('main_padding')pt-24@show">
             @yield('content')
         </main>
 
         <!-- ═══════════════════════════════════════════
              FOOTER — N-CEYLON Redesign
         ═══════════════════════════════════════════ -->
+        @section('footer')
         <footer class="relative bg-secondary text-white overflow-hidden">
 
             <!-- ── Top accent line ── -->
@@ -435,6 +438,7 @@
             </div>
 
         </footer>
+        @show
     </div>
 
     <!-- Swiper JS -->

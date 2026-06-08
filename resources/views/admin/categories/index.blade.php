@@ -1,9 +1,12 @@
 @extends('layouts.master')
+@section('navbar')@endsection
+@section('footer')@endsection
+@section('main_padding')pt-0@endsection
 @section('title', 'Admin — Categories')
 @section('content')
 <div class="min-h-screen bg-surface flex">
     @include('admin.layouts.sidebar')
-    <div class="flex-1 lg:ml-64 pt-24 pb-16 px-6 lg:px-10">
+    <div class="flex-1 lg:ml-64 pt-10 pb-16 px-6 lg:px-10">
 
         {{-- Header --}}
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-10">

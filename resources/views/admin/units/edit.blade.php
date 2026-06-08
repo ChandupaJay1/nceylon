@@ -1,9 +1,12 @@
 @extends('layouts.master')
+@section('navbar')@endsection
+@section('footer')@endsection
+@section('main_padding')pt-0@endsection
 @section('title', 'Admin — Edit Unit')
 @section('content')
 <div class="min-h-screen bg-surface flex">
     @include('admin.layouts.sidebar')
-    <div class="flex-1 lg:ml-64 pt-24 pb-16 px-6 lg:px-10">
+    <div class="flex-1 lg:ml-64 pt-10 pb-16 px-6 lg:px-10">
         <div class="max-w-lg">
             <a href="{{ route('admin.units.index') }}" class="inline-flex items-center gap-2 text-primary hover:text-primary-dark font-semibold text-sm mb-6">
                 <i class="fas fa-arrow-left text-xs"></i> Back to Units
