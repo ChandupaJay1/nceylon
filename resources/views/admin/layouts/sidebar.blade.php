@@ -11,53 +11,5 @@
         </a>
     </div>
 
-    {{-- Nav --}}
-    <nav class="flex-1 p-4 space-y-1 overflow-y-auto">
-        {{-- Products --}}
-        <p class="text-white/25 text-[9px] font-black uppercase tracking-widest px-3 pt-4 pb-2">Products</p>
-        <a href="{{ route('admin.products.index') }}"
-           class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition-all
-                  {{ Request::is('admin/products*') ? 'bg-primary text-white' : 'text-white/60 hover:bg-white/8 hover:text-white' }}">
-            <i class="fas fa-box-open w-4 text-center"></i> Products
-        </a>
 
-        {{-- Gallery --}}
-        <p class="text-white/25 text-[9px] font-black uppercase tracking-widest px-3 pt-4 pb-2">Media</p>
-        <a href="{{ route('admin.gallery.index') }}"
-           class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition-all
-                  {{ Request::is('admin/gallery*') ? 'bg-primary text-white' : 'text-white/60 hover:bg-white/8 hover:text-white' }}">
-            <i class="fas fa-images w-4 text-center"></i> Gallery
-        </a>
-
-        {{-- Settings --}}
-        <p class="text-white/25 text-[9px] font-black uppercase tracking-widest px-3 pt-4 pb-2">Settings</p>
-        <a href="{{ route('admin.categories.index') }}"
-           class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition-all
-                  {{ Request::is('admin/categories*') ? 'bg-primary text-white' : 'text-white/60 hover:bg-white/8 hover:text-white' }}">
-            <i class="fas fa-tags w-4 text-center"></i> Categories
-        </a>
-        <a href="{{ route('admin.units.index') }}"
-           class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition-all
-                  {{ Request::is('admin/units*') ? 'bg-primary text-white' : 'text-white/60 hover:bg-white/8 hover:text-white' }}">
-            <i class="fas fa-weight-hanging w-4 text-center"></i> Units
-        </a>
-        <a href="{{ route('admin.stock-statuses.index') }}"
-           class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition-all
-                  {{ Request::is('admin/stock-statuses*') ? 'bg-primary text-white' : 'text-white/60 hover:bg-white/8 hover:text-white' }}">
-            <i class="fas fa-circle-dot w-4 text-center"></i> Stock Statuses
-        </a>
-    </nav>
-
-    {{-- Footer --}}
-    <div class="p-4 border-t border-white/10">
-        <form method="POST" action="{{ route('admin.logout') }}">
-            @csrf
-            <button type="submit" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-white/50 hover:bg-red-500/20 hover:text-red-400 transition-all">
-                <i class="fas fa-sign-out-alt w-4 text-center"></i> Logout
-            </button>
-        </form>
-        <a href="{{ url('/') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-white/50 hover:bg-white/8 hover:text-white transition-all mt-1">
-            <i class="fas fa-globe w-4 text-center"></i> View Website
-        </a>
-    </div>
 </aside>
