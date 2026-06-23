@@ -62,12 +62,12 @@
                     <div class="mt-10 space-y-8">
                         <!-- Features list -->
                         <div class="grid grid-cols-2 gap-4">
-                            @foreach([['fa-certificate', 'GMP Certification'], ['fa-globe', 'Local & Export Ready'], ['fa-leaf', 'Hand-Packaged Quality'], ['fa-flask', 'Lab Verified Standards']] as [$icon, $label])
+                            @foreach([['fa-certificate', 'GMP Certification'], ['fa-globe', 'Local & Export Ready'], ['fa-leaf', 'Hand-Packaged Quality'], ['fa-flask', 'Lab Verified Standards']] as $feature)
                             <div class="flex items-center gap-3 group">
                                 <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all flex-shrink-0">
-                                    <i class="fas {{ $icon }} text-sm"></i>
+                                    <i class="fas {{ $feature[0] }} text-sm"></i>
                                 </div>
-                                <span class="font-black text-secondary text-xs sm:text-sm">{{ $label }}</span>
+                                <span class="font-black text-secondary text-xs sm:text-sm">{{ $feature[1] }}</span>
                             </div>
                             @endforeach
                         </div>
@@ -139,13 +139,13 @@
                     ['fa-seedling', 'Freshest Quality Products', 'It is vital that the products we obtain are the freshest, most outstanding quality available. We source directly to ensure nothing but the best reaches our clients.'],
                     ['fa-handshake', 'Family-Run with Heart', 'Founded by Mrs. T.M. Priyani Tennakoon and Mr. U.D.W. Nandana Rodrigo, N-Ceylon is built on family values — personal care, trust, and a genuine passion for Sri Lankan spices.'],
                     ['fa-award', 'GMP Certified Standards', 'We are in the final stages of GMP (Good Manufacturing Practices) certification under the "Strengthening Quality Infrastructure in Sri Lanka" project, supported by PTB, the German National Metrology Institute.']
-                ] as [$icon, $title, $desc])
+                ] as $feature)
                 <div class="bg-surface rounded-[40px] p-10 lg:p-12 group hover:bg-primary transition-all duration-500 reveal-up shadow-premium border border-secondary/5">
                     <div class="w-16 h-16 bg-primary/10 group-hover:bg-white/20 rounded-2xl flex items-center justify-center text-primary group-hover:text-white text-2xl mb-8 transition-all">
-                        <i class="fas {{ $icon }}"></i>
+                        <i class="fas {{ $feature[0] }}"></i>
                     </div>
-                    <h4 class="text-xl font-black text-secondary group-hover:text-white mb-4 transition-colors">{{ $title }}</h4>
-                    <p class="text-gray-500 group-hover:text-white/80 text-sm leading-relaxed transition-colors">{{ $desc }}</p>
+                    <h4 class="text-xl font-black text-secondary group-hover:text-white mb-4 transition-colors">{{ $feature[1] }}</h4>
+                    <p class="text-gray-500 group-hover:text-white/80 text-sm leading-relaxed transition-colors">{{ $feature[2] }}</p>
                 </div>
                 @endforeach
             </div>
@@ -186,13 +186,13 @@
                     ['2023–2024', 'Building Quality Frameworks', 'Invested heavily in team training and supervisory systems to guarantee every product meets the absolute highest standards of freshness and quality before reaching clients.'],
                     ['2024', 'GMP Certification Journey', 'Entered the final stages of GMP (Good Manufacturing Practices) certification under the "Strengthening Quality Infrastructure in Sri Lanka" project, supported by PTB — the German National Metrology Institute.'],
                     ['Today', 'A Thriving Family Business', 'What began as a family vision has grown into a thriving company, delivering premium Ceylon spices with the personal care and quality commitment that only a family-run business can offer.']
-                ] as [$year, $title, $desc])
+                ] as $event)
                 <div class="relative pl-16 pb-12 reveal-up">
                     <div class="absolute left-0 top-0 w-[2px] h-full bg-primary/20"></div>
                     <div class="absolute left-[-9px] top-1.5 w-[20px] h-[20px] rounded-full bg-primary shadow-spice-gold border-4 border-surface"></div>
-                    <span class="text-primary font-black text-xs uppercase tracking-widest mb-2 block">{{ $year }}</span>
-                    <h4 class="text-xl font-black text-secondary mb-2">{{ $title }}</h4>
-                    <p class="text-gray-500 text-sm leading-relaxed">{{ $desc }}</p>
+                    <span class="text-primary font-black text-xs uppercase tracking-widest mb-2 block">{{ $event[0] }}</span>
+                    <h4 class="text-xl font-black text-secondary mb-2">{{ $event[1] }}</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">{{ $event[2] }}</p>
                 </div>
                 @endforeach
             </div>
