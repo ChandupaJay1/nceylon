@@ -58,15 +58,68 @@
                         We cater the best quality products, captivating spices and tastes, and striking outcomes for our clients. We invest a huge amount of time and resources — alongside our team and supervisory crew — into frameworks designed to guarantee that every product meets the absolute highest standards.
                     </p>
 
-                    <div class="grid grid-cols-2 gap-6 mt-10">
-                        @foreach([['fa-certificate', 'GMP Certification (In Progress)'], ['fa-globe', 'Local & Export Ready'], ['fa-leaf', 'Hand-Packaged Quality'], ['fa-flask', 'Lab Verified Standards']] as [$icon, $label])
-                        <div class="flex items-center gap-4 group">
-                            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
-                                <i class="fas {{ $icon }}"></i>
+                    <!-- Features + Owner Cards grid -->
+                    <div class="mt-10 space-y-8">
+                        <!-- Features list -->
+                        <div class="grid grid-cols-2 gap-4">
+                            @foreach([['fa-certificate', 'GMP Certification'], ['fa-globe', 'Local & Export Ready'], ['fa-leaf', 'Hand-Packaged Quality'], ['fa-flask', 'Lab Verified Standards']] as [$icon, $label])
+                            <div class="flex items-center gap-3 group">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all flex-shrink-0">
+                                    <i class="fas {{ $icon }} text-sm"></i>
+                                </div>
+                                <span class="font-black text-secondary text-xs sm:text-sm">{{ $label }}</span>
                             </div>
-                            <span class="font-black text-secondary text-sm">{{ $label }}</span>
+                            @endforeach
                         </div>
-                        @endforeach
+
+                        <!-- Owner Cards — side by side -->
+                        <div class="grid grid-cols-2 gap-4 sm:gap-6">
+
+                            {{-- Founder Card --}}
+                            <div class="group relative bg-white rounded-3xl shadow-premium border border-secondary/5 hover:border-primary/20 transition-all duration-500 overflow-hidden">
+                                <div class="h-1.5 w-full bg-gradient-to-r from-primary via-accent to-primary"></div>
+                                <div class="p-3 sm:p-4 flex flex-col items-center text-center">
+                                    <div class="relative mb-3 w-full">
+                                        <div class="absolute -inset-2 bg-gradient-to-br from-primary via-accent to-primary rounded-[22px] opacity-20 blur-lg group-hover:opacity-50 transition-all duration-500"></div>
+                                        <div class="relative w-full h-[200px] sm:h-[260px] md:h-[300px] rounded-[14px] overflow-hidden border-4 border-white shadow-xl">
+                                            <img src="{{ asset('assets/owner/owner2.PNG') }}"
+                                                 onerror="this.src='{{ asset('assets/userfemale.png') }}'"
+                                                 alt="Mrs. T.M. Priyani Tennakoon"
+                                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                                 style="object-position: center 10%;">
+                                        </div>
+                                        <span class="absolute bottom-2 right-2 w-3 h-3 bg-green-400 border-2 border-white rounded-full shadow-md"></span>
+                                    </div>
+                                    <span class="inline-block text-[7px] sm:text-[8px] font-black uppercase tracking-[0.2em] text-white bg-accent px-2.5 py-1 rounded-full mb-1.5">Founder</span>
+                                    <h5 class="text-secondary font-black text-[10px] sm:text-xs leading-snug">Mrs. T.M. Priyani Tennakoon</h5>
+                                    <p class="text-gray-400 text-[9px] sm:text-[10px] mt-1">N-Ceylon Spices</p>
+                                    <div class="w-8 h-0.5 bg-gradient-to-r from-accent to-primary rounded-full mt-2.5"></div>
+                                </div>
+                            </div>
+
+                            {{-- Co-Founder Card --}}
+                            <div class="group relative bg-white rounded-3xl shadow-premium border border-secondary/5 hover:border-primary/20 transition-all duration-500 overflow-hidden">
+                                <div class="h-1.5 w-full bg-gradient-to-r from-primary via-accent to-primary"></div>
+                                <div class="p-3 sm:p-4 flex flex-col items-center text-center">
+                                    <div class="relative mb-3 w-full">
+                                        <div class="absolute -inset-2 bg-gradient-to-br from-primary via-accent to-primary rounded-[22px] opacity-20 blur-lg group-hover:opacity-50 transition-all duration-500"></div>
+                                        <div class="relative w-full h-[200px] sm:h-[260px] md:h-[300px] rounded-[14px] overflow-hidden border-4 border-white shadow-xl">
+                                            <img src="{{ asset('assets/owner/owner.jpeg') }}"
+                                                 onerror="this.src='{{ asset('assets/usermale2.png') }}'"
+                                                 alt="Mr. U.D.W. Nandana Rodrigo"
+                                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                                 style="object-position: center 15%;">
+                                        </div>
+                                        <span class="absolute bottom-2 right-2 w-3 h-3 bg-green-400 border-2 border-white rounded-full shadow-md"></span>
+                                    </div>
+                                    <span class="inline-block text-[7px] sm:text-[8px] font-black uppercase tracking-[0.2em] text-white bg-primary px-2.5 py-1 rounded-full mb-1.5">Co-Founder</span>
+                                    <h5 class="text-secondary font-black text-[10px] sm:text-xs leading-snug">Mr. U.D.W. Nandana Rodrigo</h5>
+                                    <p class="text-gray-400 text-[9px] sm:text-[10px] mt-1">N-Ceylon Spices</p>
+                                    <div class="w-8 h-0.5 bg-gradient-to-r from-primary to-accent rounded-full mt-2.5"></div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>

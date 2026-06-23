@@ -26,7 +26,7 @@
 
 <body class="bg-surface font-sans text-secondary overflow-x-hidden">
     <!-- Preloader -->
-    <div id="preloader" class="fixed inset-0 z-[9999] flex items-center justify-center bg-gradient-to-br from-secondary via-secondary-light to-secondary transition-opacity duration-500 overflow-hidden">
+    {{-- <div id="preloader" class="fixed inset-0 z-[9999] flex items-center justify-center bg-gradient-to-br from-secondary via-secondary-light to-secondary transition-opacity duration-500 overflow-hidden">
         <!-- Animated background particles -->
         <div class="absolute inset-0 opacity-10">
             <div class="absolute top-1/4 left-1/4 w-32 h-32 bg-primary rounded-full blur-3xl animate-pulse"></div>
@@ -94,7 +94,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <div class="flex flex-col min-h-screen">
         <!-- Floating Header / Navbar -->
@@ -455,14 +455,19 @@
         };
 
         // Preloader with visibility delay
+        // window.addEventListener('load', () => {
+        //     const preloader = document.getElementById('preloader');
+        //     if (preloader) {
+        //         setTimeout(() => {
+        //             preloader.classList.add('opacity-0');
+        //             setTimeout(() => preloader.classList.add('hidden'), 500);
+        //         }, 800);
+        //     }
+        //     initSwiper();
+        // });
+        
+        // Initialize Swiper immediately without preloader delay
         window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            if (preloader) {
-                setTimeout(() => {
-                    preloader.classList.add('opacity-0');
-                    setTimeout(() => preloader.classList.add('hidden'), 500);
-                }, 800);
-            }
             initSwiper();
         });
 

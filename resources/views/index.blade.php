@@ -327,7 +327,7 @@
         <div class="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/leaf.png')]"></div>
         <div class="container mx-auto px-4 relative z-10">
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
-                @foreach([['8', 'Spice Grades'], ['350', 'Partner Farms'], ['15', 'Export Nations'], ['1200', 'Bulk Buyers']] as [$count, $label])
+                @foreach([['8', 'Spice Grades'], ['100', 'Partner Farms'], ['10', 'Export Nations'], ['80', 'Bulk Buyers']] as [$count, $label])
                 <div class="text-center group">
                     <div class="text-5xl sm:text-6xl font-heading font-black text-white mb-3 transition-transform group-hover:scale-105">
                         <span class="odometer" data-count="{{ $count }}">0</span><span class="text-2xl text-accent inline-block -ml-1">+</span>
